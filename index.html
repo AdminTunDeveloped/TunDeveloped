@@ -300,23 +300,16 @@ snow.appendChild(s)
 
 /* IP */
 
-fetch("https://ipwho.is/")
-.then(function(response){
-return response.json();
+/* IP + COUNTRY */
+
+fetch("https://ipinfo.io/json")
+.then(function(res){
+return res.json();
 })
 .then(function(data){
 
-if(data.success){
-
 document.getElementById("ip").innerText = data.ip;
 document.getElementById("country").innerText = data.country;
-
-}else{
-
-document.getElementById("ip").innerText = "Unknown";
-document.getElementById("country").innerText = "Unknown";
-
-}
 
 })
 .catch(function(){
