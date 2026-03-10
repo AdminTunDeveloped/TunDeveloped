@@ -25,8 +25,6 @@ justify-content:center;
 overflow-x:hidden;
 }
 
-/* SNOW */
-
 .snow{
 position:fixed;
 top:0;
@@ -47,15 +45,11 @@ animation:snow 10s linear infinite;
 100%{transform:translateY(110vh);opacity:0;}
 }
 
-/* MAIN */
-
 .main{
 width:100%;
 max-width:420px;
 padding:20px;
 }
-
-/* CARD */
 
 .card{
 background:#020617;
@@ -65,19 +59,14 @@ box-shadow:0 0 40px rgba(0,255,150,0.15);
 text-align:center;
 }
 
-/* TITLE */
-
 .title{
 font-family:Bebas Neue;
 font-size:42px;
 letter-spacing:4px;
-
 background:linear-gradient(90deg,red,orange,yellow,green,cyan,blue,violet);
 background-size:400%;
-
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-
 animation:rainbow 6s linear infinite;
 }
 
@@ -85,8 +74,6 @@ animation:rainbow 6s linear infinite;
 0%{background-position:0%}
 100%{background-position:400%}
 }
-
-/* ONLINE */
 
 .online{
 color:#22c55e;
@@ -101,8 +88,6 @@ animation:blink 1.5s infinite;
 100%{opacity:1}
 }
 
-/* INPUT */
-
 input{
 width:100%;
 padding:14px;
@@ -110,8 +95,6 @@ border:none;
 border-radius:10px;
 margin-top:15px;
 }
-
-/* BUTTON */
 
 button{
 margin-top:15px;
@@ -135,7 +118,6 @@ top:-2px;
 left:-2px;
 right:-2px;
 bottom:-2px;
-
 background:linear-gradient(45deg,#ff0050,#00f2ea,#ff0050);
 background-size:400%;
 border-radius:12px;
@@ -147,8 +129,6 @@ animation:rgb 6s linear infinite;
 0%{background-position:0%}
 100%{background-position:400%}
 }
-
-/* RESULT */
 
 #result{
 margin-top:18px;
@@ -168,8 +148,6 @@ font-weight:700;
 text-shadow:0 0 10px #ef4444;
 }
 
-/* DOWNLOAD */
-
 .download{
 display:block;
 margin-top:15px;
@@ -181,8 +159,6 @@ font-weight:700;
 text-decoration:none;
 }
 
-/* SYSTEM */
-
 .system{
 margin-top:18px;
 font-size:12px;
@@ -193,15 +169,11 @@ border-radius:8px;
 line-height:1.6;
 }
 
-/* IP */
-
 .ip{
 margin-top:10px;
 font-size:12px;
 color:#22c55e;
 }
-
-/* NOTICE */
 
 .notice{
 margin-top:18px;
@@ -212,8 +184,6 @@ font-size:12px;
 color:#cbd5f5;
 line-height:1.6;
 }
-
-/* SOCIAL */
 
 .contact{
 margin-top:20px;
@@ -238,8 +208,6 @@ transition:0.3s;
 box-shadow:0 0 20px #ff0050;
 transform:translateY(-3px);
 }
-
-/* LOADING */
 
 .spinner{
 border:4px solid #111;
@@ -330,13 +298,20 @@ s.style.animationDuration=5+Math.random()*10+"s"
 snow.appendChild(s)
 }
 
-/* IP + COUNTRY */
+/* IP */
 
-fetch("https://ipinfo.io/json")
+fetch("https://api.ipify.org?format=json")
 .then(res=>res.json())
 .then(data=>{
 document.getElementById("ip").innerText=data.ip
-document.getElementById("country").innerText=data.country
+})
+
+/* COUNTRY */
+
+fetch("https://ipapi.co/json/")
+.then(res=>res.json())
+.then(data=>{
+document.getElementById("country").innerText=data.country_name
 })
 
 /* LOAD UID */
@@ -377,15 +352,11 @@ setTimeout(function(){
 
 if(whitelist.includes(uid)){
 
-result.innerHTML=
-"<span class='success'>✅ Xác minh thành công</span>\
-<a class='download' href='#' onclick='downloadFile()'>TẢI FILE</a>"
+result.innerHTML="<span class='success'>✅ Xác minh thành công</span><a class='download' href='#' onclick='downloadFile()'>TẢI FILE</a>"
 
 }else{
 
-result.innerHTML=
-"<span class='error'>❌ Chưa được cấp quyền</span><br>Liên hệ Zalo 0378099746
-  Telegram : @TUNDEVELOPED_REAL"
+result.innerHTML="<span class='error'>❌ Chưa được cấp quyền</span><br>Liên hệ Zalo 0378099746<br>Telegram : @TUNDEVELOPED_REAL"
 
 }
 
@@ -394,7 +365,14 @@ result.innerHTML=
 }
 
 function downloadFile(){
+
+if(downloadLink==""){
+alert("Link chưa tải xong")
+return
+}
+
 window.open(atob(downloadLink))
+
 }
 
 </script>
