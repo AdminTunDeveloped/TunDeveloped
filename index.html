@@ -300,18 +300,22 @@ snow.appendChild(s)
 
 /* IP */
 
-fetch("https://ipwho.is/")
-.then(res=>res.json())
-.then(data=>{
+fetch("https://ipapi.co/json/")
+.then(function(res){
+return res.json();
+})
+.then(function(data){
 
-document.getElementById("ip").innerText = data.ip
-
-document.getElementById("country").innerText = data.country
+document.getElementById("ip").innerText = data.ip;
+document.getElementById("country").innerText = data.country_name;
 
 })
-.catch(()=>{
-document.getElementById("country").innerText = "Unknown"
-})
+.catch(function(){
+
+document.getElementById("ip").innerText = "Unknown";
+document.getElementById("country").innerText = "Unknown";
+
+});
 
 /* LOAD UID */
 
