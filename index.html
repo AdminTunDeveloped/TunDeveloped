@@ -138,10 +138,8 @@ bottom:-2px;
 
 background:linear-gradient(45deg,#ff0050,#00f2ea,#ff0050);
 background-size:400%;
-
 border-radius:12px;
 z-index:-1;
-
 animation:rgb 6s linear infinite;
 }
 
@@ -193,14 +191,6 @@ background:#020617;
 padding:12px;
 border-radius:8px;
 line-height:1.6;
-}
-
-/* STATS */
-
-.stats{
-margin-top:18px;
-font-size:13px;
-color:#94a3b8;
 }
 
 /* IP */
@@ -306,12 +296,6 @@ Country : <span id="country">Loading...</span>
 <p>📦 Version : v2.6</p>
 </div>
 
-<div class="stats">
-<p>👥 Người dùng : <span id="users">0</span></p>
-<p>⬇ Lượt tải : <span id="downloads">0</span></p>
-<p>🟢 Online : <span id="online">0</span></p>
-</div>
-
 <div class="notice">
 📢 Thông báo hệ thống:<br>
 • Hệ thống kích hoạt hoạt động ổn định.<br>
@@ -320,13 +304,9 @@ Country : <span id="country">Loading...</span>
 </div>
 
 <div class="contact">
-
 <a href="https://www.facebook.com/share/1AcJpxoDPP/?mibextid=wwXIfr" target="_blank">Facebook</a>
-
 <a href="https://www.tiktok.com/@tundeveloped" target="_blank">TikTok</a>
-
 <a href="https://zalo.me/0378099746" target="_blank">Zalo</a>
-
 </div>
 
 <footer>
@@ -334,7 +314,6 @@ Country : <span id="country">Loading...</span>
 </footer>
 
 </div>
-
 </div>
 
 <script>
@@ -344,17 +323,11 @@ Country : <span id="country">Loading...</span>
 let snow=document.getElementById("snow")
 
 for(let i=0;i<50;i++){
-
 let s=document.createElement("span")
-
 s.innerHTML=" "
-
 s.style.left=Math.random()*100+"%"
 s.style.animationDuration=5+Math.random()*10+"s"
-s.style.fontSize=10+Math.random()*15+"px"
-
 snow.appendChild(s)
-
 }
 
 /* IP + COUNTRY */
@@ -366,38 +339,6 @@ document.getElementById("ip").innerText=data.ip
 document.getElementById("country").innerText=data.country
 })
 
-/* STATS */
-
-window.onload=function(){
-
-animateValue("users",0,1600,2000)
-animateValue("downloads",0,7200,2000)
-animateValue("online",0,120,2000)
-
-}
-
-function animateValue(id,start,end,duration){
-
-let range=end-start
-let current=start
-let increment=1
-let stepTime=Math.abs(Math.floor(duration/range))
-
-let obj=document.getElementById(id)
-
-let timer=setInterval(function(){
-
-current+=increment
-obj.innerText=current
-
-if(current>=end){
-clearInterval(timer)
-}
-
-},stepTime)
-
-}
-
 /* LOAD UID */
 
 let whitelist=[];
@@ -406,6 +347,16 @@ fetch("id.txt")
 .then(res=>res.text())
 .then(data=>{
 whitelist=data.split("\n").map(e=>e.trim())
+})
+
+/* LOAD LINK */
+
+let downloadLink="";
+
+fetch("config.txt")
+.then(res=>res.text())
+.then(data=>{
+downloadLink=data.trim()
 })
 
 /* CHECK */
@@ -442,9 +393,7 @@ result.innerHTML=
 }
 
 function downloadFile(){
-
-window.open(atob("aHR0cHM6Ly93d3cubWVkaWFmaXJlLmNvbS9maWxlL1hYWFgvZmlsZS56aXA="))
-
+window.open(atob(downloadLink))
 }
 
 </script>
