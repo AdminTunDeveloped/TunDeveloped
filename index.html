@@ -300,18 +300,17 @@ snow.appendChild(s)
 
 /* IP */
 
-fetch("https://api.ipify.org?format=json")
+fetch("https://ipwho.is/")
 .then(res=>res.json())
 .then(data=>{
-document.getElementById("ip").innerText=data.ip
+
+document.getElementById("ip").innerText = data.ip
+
+document.getElementById("country").innerText = data.country
+
 })
-
-/* COUNTRY */
-
-fetch("https://ipapi.co/json/")
-.then(res=>res.json())
-.then(data=>{
-document.getElementById("country").innerText=data.country_name
+.catch(()=>{
+document.getElementById("country").innerText = "Unknown"
 })
 
 /* LOAD UID */
