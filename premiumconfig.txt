@@ -1,0 +1,1 @@
+shadowrocket://add/config?url=https://raw.githubusercontent.com/AdminCrackForceTeam/Sever50014/main/ScriptTunDeveloped.conf
