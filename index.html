@@ -230,13 +230,13 @@ Device : <span id="device">Loading</span>
 
 <div class="about">
 <strong>About TUN DEVELOPED</strong><br>
-TUN DEVELOPED là hệ thống quản lý và phân phối công cụ được phát triển bởi Tun Developed Team. 
-Hệ thống xác minh UID để đảm bảo chỉ người dùng hợp lệ mới truy cập server và tải công cụ.
+TUN DEVELOPED là hệ thống quản lý và phân phối công cụ được phát triển bởi Tun Developed Team.
+Hệ thống xác minh UID để đảm bảo chỉ người dùng hợp lệ mới truy cập server.
 </div>
 
 <div class="reviews">
 <div class="review">★★★★★ Tool rất mượt, server ổn định — Minh Huy</div>
-<div class="review">★★★★★ Xác minh nhanh, support nhiệt tình — Tuấn Anh</div>
+<div class="review">★★★★★ Xác minh nhanh — Tuấn Anh</div>
 <div class="review">★★★★★ Giao diện chuyên nghiệp — Hoàng Nam</div>
 <div class="review">★★★★★ Server premium cực ổn — Đức Trần</div>
 </div>
@@ -264,21 +264,15 @@ document.getElementById("users").innerText=Math.floor(Math.random()*500+100)
 /* IP */
 
 fetch("https://ipinfo.io/json")
-.then(function(res){
-return res.json();
+.then(res=>res.json())
+.then(data=>{
+document.getElementById("ip").innerText=data.ip
+document.getElementById("country").innerText=data.country
 })
-.then(function(data){
-
-document.getElementById("ip").innerText = data.ip;
-document.getElementById("country").innerText = data.country;
-
+.catch(()=>{
+document.getElementById("ip").innerText="Unknown"
+document.getElementById("country").innerText="Unknown"
 })
-.catch(function(){
-
-document.getElementById("ip").innerText = "Unknown";
-document.getElementById("country").innerText = "Unknown";
-
-});
 
 /* DEVICE */
 
@@ -292,6 +286,7 @@ document.getElementById("device").innerText=device
 
 let freeUID=[]
 let premiumUID=[]
+let premiumConfig=""
 
 fetch("id.txt")
 .then(r=>r.text())
@@ -303,6 +298,12 @@ fetch("premium.txt")
 .then(r=>r.text())
 .then(d=>{
 premiumUID=d.split("\n").map(x=>x.trim())
+})
+
+fetch("premiumconfig.txt")
+.then(r=>r.text())
+.then(d=>{
+premiumConfig=d.trim()
 })
 
 /* CHECK */
@@ -349,7 +350,7 @@ document.getElementById("ok").play()
 result.innerHTML="<span class='success'>💎 Premium Activated</span>"
 
 setTimeout(()=>{
-window.location.href="shadowrocket://add/config?url=https://raw.githubusercontent.com/AdminCrackForceTeam/Sever50014/main/ScriptTunDeveloped.conf"
+window.location.href="shadowrocket://add/config?url="+premiumConfig
 },1500)
 
 }else{
