@@ -222,10 +222,8 @@ Device : <span id="device">Loading</span>
 
 <div class="system">
 🟢 Server : ONLINE<br>
-🛡 Security : AES-256<br>
-📦 Version : v3.0<br>
 ⏰ Time : <span id="time"></span><br>
-👥 Users : <span id="users"></span>
+👥 Đang Sử Dụng : <span id="users"></span>
 </div>
 
 <div class="about">
@@ -235,7 +233,7 @@ Hệ thống xác minh UID để đảm bảo chỉ người dùng hợp lệ m�
 </div>
 
 <div class="reviews">
-<div class="review">★★★★★ Tool rất mượt, server ổn định — Minh Huy</div>
+<div class="review">★★★★★ Phần mềm rất mượt, server ổn định — Minh Huy</div>
 <div class="review">★★★★★ Xác minh nhanh — Tuấn Anh</div>
 <div class="review">★★★★★ Giao diện chuyên nghiệp — Hoàng Nam</div>
 <div class="review">★★★★★ Server premium cực ổn — Đức Trần</div>
@@ -251,17 +249,14 @@ Hệ thống xác minh UID để đảm bảo chỉ người dùng hợp lệ m�
 
 <script>
 
-/* TIME */
 
 setInterval(()=>{
 document.getElementById("time").innerText=new Date().toLocaleTimeString()
 },1000)
 
-/* USERS */
 
 document.getElementById("users").innerText=Math.floor(Math.random()*500+100)
 
-/* IP */
 
 fetch("https://ipinfo.io/json")
 .then(res=>res.json())
@@ -274,7 +269,6 @@ document.getElementById("ip").innerText="Unknown"
 document.getElementById("country").innerText="Unknown"
 })
 
-/* DEVICE */
 
 let ua=navigator.userAgent
 let device=/iphone/i.test(ua)?"iPhone":
@@ -282,7 +276,6 @@ let device=/iphone/i.test(ua)?"iPhone":
 
 document.getElementById("device").innerText=device
 
-/* LOAD UID */
 
 let freeUID=[]
 let premiumUID=[]
@@ -306,8 +299,6 @@ fetch("premiumconfig.txt")
 premiumConfig=d.trim()
 })
 
-/* CHECK */
-
 function check(){
 
 let uid=document.getElementById("uid").value
@@ -315,11 +306,11 @@ let server=document.getElementById("server").value
 let result=document.getElementById("result")
 
 if(uid==""){
-result.innerHTML="<span class='error'>⚠ nhập UID</span>"
+result.innerHTML="<span class='error'>⚠ Nhập UID Để Sử Dụng</span>"
 return
 }
 
-result.innerHTML="⏳ verifying..."
+result.innerHTML="⏳ Verifying..."
 
 setTimeout(()=>{
 
@@ -347,11 +338,24 @@ if(premiumUID.includes(uid)){
 
 document.getElementById("ok").play()
 
+
+navigator.clipboard.writeText(premiumConfig).then(()=>{
+
+result.innerHTML="<span class='success'>💎 Premium Activated<br>📋 Config Copied</span>"
+
+setTimeout(()=>{
+window.location.href="shadowrocket://add/config?url="+encodeURIComponent(premiumConfig)
+},1200)
+
+}).catch(()=>{
+
 result.innerHTML="<span class='success'>💎 Premium Activated</span>"
 
 setTimeout(()=>{
-window.location.href="shadowrocket://add/config?url="+premiumConfig
-},1500)
+window.location.href="shadowrocket://add/config?url="+encodeURIComponent(premiumConfig)
+},1200)
+
+})
 
 }else{
 
