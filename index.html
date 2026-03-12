@@ -36,8 +36,6 @@ box-shadow:0 0 40px rgba(0,255,150,0.2);
 text-align:center;
 }
 
-/* TITLE */
-
 .title{
 font-family:Bebas Neue;
 font-size:42px;
@@ -59,8 +57,6 @@ color:#22c55e;
 font-weight:700
 }
 
-/* INPUT */
-
 input,select{
 width:100%;
 padding:14px;
@@ -71,8 +67,6 @@ border:1px solid #1e293b;
 color:white;
 font-size:14px
 }
-
-/* BUTTON */
 
 .rgb-btn{
 margin-top:12px;
@@ -124,8 +118,6 @@ font-size:14px
 .success{color:#22c55e;font-weight:700}
 .error{color:#ef4444;font-weight:700}
 
-/* SYSTEM */
-
 .system{
 margin-top:18px;
 font-size:12px;
@@ -136,8 +128,6 @@ border-radius:8px;
 line-height:1.6
 }
 
-/* ABOUT */
-
 .about{
 margin-top:15px;
 background:#020617;
@@ -146,8 +136,6 @@ border-radius:8px;
 font-size:12px;
 color:#cbd5f5
 }
-
-/* REVIEWS */
 
 .reviews{
 margin-top:15px;
@@ -210,7 +198,7 @@ Device : <span id="device">Loading</span>
 <option value="premium">💎 Server Premium</option>
 </select>
 
-<input id="uid" placeholder="Nhập ID thiết bị">
+<input id="uid" placeholder="Nhập UID để sử dụng">
 
 <button class="rgb-btn" onclick="check()">🔐 XÁC MINH QUYỀN</button>
 
@@ -223,7 +211,7 @@ Device : <span id="device">Loading</span>
 <div class="system">
 🟢 Server : ONLINE<br>
 ⏰ Time : <span id="time"></span><br>
-👥 Đang Sử Dụng : <span id="users"></span>
+👥 Đang sử dụng : <span id="users"></span>
 </div>
 
 <div class="about">
@@ -233,7 +221,7 @@ Hệ thống xác minh UID để đảm bảo chỉ người dùng hợp lệ m�
 </div>
 
 <div class="reviews">
-<div class="review">★★★★★ Phần mềm rất mượt, server ổn định — Minh Huy</div>
+<div class="review">★★★★★ Script rất mượt, server ổn định — Minh Huy</div>
 <div class="review">★★★★★ Xác minh nhanh — Tuấn Anh</div>
 <div class="review">★★★★★ Giao diện chuyên nghiệp — Hoàng Nam</div>
 <div class="review">★★★★★ Server premium cực ổn — Đức Trần</div>
@@ -249,26 +237,32 @@ Hệ thống xác minh UID để đảm bảo chỉ người dùng hợp lệ m�
 
 <script>
 
+/* TIME */
 
 setInterval(()=>{
 document.getElementById("time").innerText=new Date().toLocaleTimeString()
 },1000)
 
+/* USERS */
 
+setInterval(()=>{
 document.getElementById("users").innerText=Math.floor(Math.random()*500+100)
+},4000)
 
+/* IP */
 
-fetch("https://ipinfo.io/json")
+fetch("https://ipapi.co/json/")
 .then(res=>res.json())
 .then(data=>{
 document.getElementById("ip").innerText=data.ip
-document.getElementById("country").innerText=data.country
+document.getElementById("country").innerText=data.country_name
 })
 .catch(()=>{
 document.getElementById("ip").innerText="Unknown"
 document.getElementById("country").innerText="Unknown"
 })
 
+/* DEVICE */
 
 let ua=navigator.userAgent
 let device=/iphone/i.test(ua)?"iPhone":
@@ -276,41 +270,68 @@ let device=/iphone/i.test(ua)?"iPhone":
 
 document.getElementById("device").innerText=device
 
+/* LOAD DATA */
 
 let freeUID=[]
 let premiumUID=[]
+let freeConfig=""
 let premiumConfig=""
+let dataLoaded=false
 
-fetch("id.txt")
-.then(r=>r.text())
-.then(d=>{
-freeUID=d.split("\n").map(x=>x.trim())
+Promise.all([
+fetch("id.txt").then(r=>r.text()),
+fetch("premium.txt").then(r=>r.text()),
+fetch("config.txt").then(r=>r.text()),
+fetch("premiumconfig.txt").then(r=>r.text())
+]).then(([free,premium,config,pconfig])=>{
+
+freeUID=free.split("\n").map(x=>x.trim())
+premiumUID=premium.split("\n").map(x=>x.trim())
+freeConfig=config.trim()
+premiumConfig=pconfig.trim()
+
+dataLoaded=true
+
 })
 
-fetch("premium.txt")
-.then(r=>r.text())
-.then(d=>{
-premiumUID=d.split("\n").map(x=>x.trim())
-})
+/* COPY FUNCTION */
 
-fetch("premiumconfig.txt")
-.then(r=>r.text())
-.then(d=>{
-premiumConfig=d.trim()
-})
+function copyText(text){
+
+if(navigator.clipboard){
+navigator.clipboard.writeText(text)
+}else{
+
+let textarea=document.createElement("textarea")
+textarea.value=text
+document.body.appendChild(textarea)
+textarea.select()
+document.execCommand("copy")
+document.body.removeChild(textarea)
+
+}
+
+}
+
+/* CHECK */
 
 function check(){
 
-let uid=document.getElementById("uid").value
+let uid=document.getElementById("uid").value.trim()
 let server=document.getElementById("server").value
 let result=document.getElementById("result")
 
-if(uid==""){
-result.innerHTML="<span class='error'>⚠ Nhập UID Để Sử Dụng</span>"
+if(!dataLoaded){
+result.innerHTML="<span class='error'>⚠ Server đang tải dữ liệu...</span>"
 return
 }
 
-result.innerHTML="⏳ Verifying..."
+if(uid==""){
+result.innerHTML="<span class='error'>⚠ nhập UID</span>"
+return
+}
+
+result.innerHTML="⏳ verifying..."
 
 setTimeout(()=>{
 
@@ -320,7 +341,13 @@ if(freeUID.includes(uid)){
 
 document.getElementById("ok").play()
 
-result.innerHTML="<span class='success'>✅ Free Access Granted</span>"
+copyText(freeConfig)
+
+result.innerHTML="<span class='success'>✅ Free Activated<br>📋 Config Copied</span>"
+
+setTimeout(()=>{
+window.location.href="shadowrocket://add/config?url="+encodeURIComponent(freeConfig)
+},1200)
 
 }else{
 
@@ -338,24 +365,13 @@ if(premiumUID.includes(uid)){
 
 document.getElementById("ok").play()
 
-
-navigator.clipboard.writeText(premiumConfig).then(()=>{
+copyText(premiumConfig)
 
 result.innerHTML="<span class='success'>💎 Premium Activated<br>📋 Config Copied</span>"
 
 setTimeout(()=>{
 window.location.href="shadowrocket://add/config?url="+encodeURIComponent(premiumConfig)
 },1200)
-
-}).catch(()=>{
-
-result.innerHTML="<span class='success'>💎 Premium Activated</span>"
-
-setTimeout(()=>{
-window.location.href="shadowrocket://add/config?url="+encodeURIComponent(premiumConfig)
-},1200)
-
-})
 
 }else{
 
