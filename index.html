@@ -177,10 +177,8 @@ Device : <span id="device">Loading</span>
 
 <div class="system">
 🟢 Server : ONLINE<br>
-🛡 Security : AES-256<br>
-📦 Version : v3.0<br>
 ⏰ Time : <span id="time"></span><br>
-👥 Users : <span id="users"></span>
+👥 Đang sử dụng : <span id="users"></span>
 </div>
 
 <div class="about">
@@ -258,11 +256,11 @@ let server=document.getElementById("server").value
 let result=document.getElementById("result")
 
 if(uid==""){
-result.innerHTML="<span class='error'>⚠ nhập UID</span>"
+result.innerHTML="<span class='error'>⚠ Nhập UID</span>"
 return
 }
 
-result.innerHTML="⏳ verifying..."
+result.innerHTML="⏳ Verifying..."
 
 setTimeout(()=>{
 
