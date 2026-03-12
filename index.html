@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>TUN DEVELOPED</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@600&family=Inter&display=swap" rel="stylesheet">
@@ -137,38 +136,6 @@ font-size:12px;
 color:#cbd5f5
 }
 
-.reviews{
-margin-top:15px;
-background:#020617;
-padding:12px;
-border-radius:8px;
-font-size:12px;
-color:#cbd5f5;
-height:40px;
-overflow:hidden;
-position:relative
-}
-
-.review{
-position:absolute;
-width:100%;
-opacity:0;
-animation:reviewSlide 16s infinite
-}
-
-.review:nth-child(1){animation-delay:0s}
-.review:nth-child(2){animation-delay:4s}
-.review:nth-child(3){animation-delay:8s}
-.review:nth-child(4){animation-delay:12s}
-
-@keyframes reviewSlide{
-0%{opacity:0;transform:translateY(20px)}
-5%{opacity:1;transform:translateY(0)}
-20%{opacity:1}
-25%{opacity:0;transform:translateY(-20px)}
-100%{opacity:0}
-}
-
 footer{
 margin-top:20px;
 font-size:11px;
@@ -210,21 +177,16 @@ Device : <span id="device">Loading</span>
 
 <div class="system">
 🟢 Server : ONLINE<br>
+🛡 Security : AES-256<br>
+📦 Version : v3.0<br>
 ⏰ Time : <span id="time"></span><br>
-👥 Đang sử dụng : <span id="users"></span>
+👥 Users : <span id="users"></span>
 </div>
 
 <div class="about">
 <strong>About TUN DEVELOPED</strong><br>
 TUN DEVELOPED là hệ thống quản lý và phân phối công cụ được phát triển bởi Tun Developed Team.
 Hệ thống xác minh UID để đảm bảo chỉ người dùng hợp lệ mới truy cập server.
-</div>
-
-<div class="reviews">
-<div class="review">★★★★★ Script rất mượt, server ổn định — Minh Huy</div>
-<div class="review">★★★★★ Xác minh nhanh — Tuấn Anh</div>
-<div class="review">★★★★★ Giao diện chuyên nghiệp — Hoàng Nam</div>
-<div class="review">★★★★★ Server premium cực ổn — Đức Trần</div>
 </div>
 
 <footer>© 2026 TUN DEVELOPED</footer>
@@ -237,32 +199,22 @@ Hệ thống xác minh UID để đảm bảo chỉ người dùng hợp lệ m�
 
 <script>
 
-/* TIME */
-
 setInterval(()=>{
 document.getElementById("time").innerText=new Date().toLocaleTimeString()
 },1000)
 
-/* USERS */
-
-setInterval(()=>{
 document.getElementById("users").innerText=Math.floor(Math.random()*500+100)
-},4000)
 
-/* IP */
-
-fetch("https://ipapi.co/json/")
+fetch("https://ipinfo.io/json")
 .then(res=>res.json())
 .then(data=>{
 document.getElementById("ip").innerText=data.ip
-document.getElementById("country").innerText=data.country_name
+document.getElementById("country").innerText=data.country
 })
 .catch(()=>{
 document.getElementById("ip").innerText="Unknown"
 document.getElementById("country").innerText="Unknown"
 })
-
-/* DEVICE */
 
 let ua=navigator.userAgent
 let device=/iphone/i.test(ua)?"iPhone":
@@ -270,61 +222,40 @@ let device=/iphone/i.test(ua)?"iPhone":
 
 document.getElementById("device").innerText=device
 
-/* LOAD DATA */
-
 let freeUID=[]
 let premiumUID=[]
 let freeConfig=""
 let premiumConfig=""
-let dataLoaded=false
 
-Promise.all([
-fetch("id.txt").then(r=>r.text()),
-fetch("premium.txt").then(r=>r.text()),
-fetch("config.txt").then(r=>r.text()),
-fetch("premiumconfig.txt").then(r=>r.text())
-]).then(([free,premium,config,pconfig])=>{
-
-freeUID=free.split("\n").map(x=>x.trim())
-premiumUID=premium.split("\n").map(x=>x.trim())
-freeConfig=config.trim()
-premiumConfig=pconfig.trim()
-
-dataLoaded=true
-
+fetch("id.txt")
+.then(r=>r.text())
+.then(d=>{
+freeUID=d.split("\n").map(x=>x.trim())
 })
 
-/* COPY FUNCTION */
+fetch("premium.txt")
+.then(r=>r.text())
+.then(d=>{
+premiumUID=d.split("\n").map(x=>x.trim())
+})
 
-function copyText(text){
+fetch("config.txt")
+.then(r=>r.text())
+.then(d=>{
+freeConfig=d.trim()
+})
 
-if(navigator.clipboard){
-navigator.clipboard.writeText(text)
-}else{
-
-let textarea=document.createElement("textarea")
-textarea.value=text
-document.body.appendChild(textarea)
-textarea.select()
-document.execCommand("copy")
-document.body.removeChild(textarea)
-
-}
-
-}
-
-/* CHECK */
+fetch("premiumconfig.txt")
+.then(r=>r.text())
+.then(d=>{
+premiumConfig=d.trim()
+})
 
 function check(){
 
-let uid=document.getElementById("uid").value.trim()
+let uid=document.getElementById("uid").value
 let server=document.getElementById("server").value
 let result=document.getElementById("result")
-
-if(!dataLoaded){
-result.innerHTML="<span class='error'>⚠ Server đang tải dữ liệu...</span>"
-return
-}
 
 if(uid==""){
 result.innerHTML="<span class='error'>⚠ nhập UID</span>"
@@ -341,13 +272,13 @@ if(freeUID.includes(uid)){
 
 document.getElementById("ok").play()
 
-copyText(freeConfig)
+navigator.clipboard.writeText(freeConfig)
 
-result.innerHTML="<span class='success'>✅ Free Activated<br>📋 Config Copied</span>"
+result.innerHTML="<span class='success'>✅ Free Access Granted<br>📋 Config Copied</span>"
 
 setTimeout(()=>{
 window.location.href="shadowrocket://add/config?url="+encodeURIComponent(freeConfig)
-},1200)
+},1500)
 
 }else{
 
@@ -365,13 +296,13 @@ if(premiumUID.includes(uid)){
 
 document.getElementById("ok").play()
 
-copyText(premiumConfig)
+navigator.clipboard.writeText(premiumConfig)
 
 result.innerHTML="<span class='success'>💎 Premium Activated<br>📋 Config Copied</span>"
 
 setTimeout(()=>{
 window.location.href="shadowrocket://add/config?url="+encodeURIComponent(premiumConfig)
-},1200)
+},1500)
 
 }else{
 
