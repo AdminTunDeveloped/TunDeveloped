@@ -1,1 +1,11 @@
-https://raw.githubusercontent.com/AdminCrackForceTeam/TELEGRAM_TUNDEVELOPED_REAL/main/CONFIGTELEGRAM_TUNDEVELOPED_REAL.conf
+{
+  "scripts": {
+    "android_full": "...apk",
+    "ios_full": "...ipa",
+    "pc_full": "...exe",
+
+    "android_free": "...free",
+    "ios_free": "...free",
+    "pc_free": "...free"
+  }
+}
