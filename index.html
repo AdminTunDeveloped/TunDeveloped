@@ -5,113 +5,94 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TUN DEVELOPED</title>
 
+<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@600&family=Inter&display=swap" rel="stylesheet">
 
+<!-- Font Awesome để hiện icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-pap0y1yZfrq/6Sb6V5kNw1ODkYFos+ZhjX+Z1U0lZg17eyy6y47v+xO1Ka/4Cw1tnj7iFz2K+x+/o1/6P6c1g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-font-family:Inter;
-background:#000;
-color:#fff;
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
+    font-family:Inter;
+    background:#000;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
 }
 
 .main{width:100%;max-width:420px;padding:20px}
 
 .card{
-background:#020617;
-border-radius:16px;
-padding:20px;
-box-shadow:0 0 30px rgba(0,255,150,0.2);
-text-align:center;
+    background:#020617;
+    border-radius:16px;
+    padding:20px;
+    box-shadow:0 0 30px rgba(0,255,150,0.2);
+    text-align:center;
 }
 
 .title{
-font-family:Bebas Neue;
-font-size:38px;
-letter-spacing:3px;
-background:linear-gradient(90deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00c8);
-background-size:400%;
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-animation:rainbow 6s linear infinite;
-}
-
-@keyframes rainbow{
-0%{background-position:0}
-100%{background-position:400%}
+    font-family:Bebas Neue;
+    font-size:38px;
+    letter-spacing:3px;
+    color:white; /* chữ tĩnh */
 }
 
 .tag{
-margin-top:8px;
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:6px;
+    margin-top:8px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:6px;
 }
 
 .tag span{
-font-size:11px;
-background:#020617;
-padding:5px 8px;
-border-radius:8px;
-border:1px solid #1e293b;
-color:#94a3b8;
+    font-size:11px;
+    background:#020617;
+    padding:5px 8px;
+    border-radius:8px;
+    border:1px solid #1e293b;
+    color:#94a3b8;
 }
 
 .box{
-margin-top:15px;
-padding:14px;
-border-radius:12px;
-background:#020617;
-border:1px solid #1e293b;
-text-align:left;
+    margin-top:15px;
+    padding:14px;
+    border-radius:12px;
+    background:#020617;
+    border:1px solid #1e293b;
+    text-align:left;
 }
 
-.box h3{font-size:13px;color:#22c55e;margin-bottom:6px}
+.box h3{
+    font-size:13px;
+    color:#22c55e;
+    margin-bottom:6px;
+}
 
 input{
-width:100%;
-padding:11px;
-border-radius:8px;
-border:1px solid #1e293b;
-background:#000;
-color:white;
-font-size:13px
+    width:100%;
+    padding:11px;
+    border-radius:8px;
+    border:1px solid #1e293b;
+    background:#000;
+    color:white;
+    font-size:13px;
 }
 
-.rgb-btn{
-margin-top:10px;
-width:100%;
-padding:11px;
-border-radius:8px;
-border:none;
-background:#000;
-color:white;
-font-family:Montserrat;
-cursor:pointer;
-position:relative;
-z-index:1;
-}
-
-.rgb-btn:before{
-content:"";
-position:absolute;
-top:-2px;left:-2px;right:-2px;bottom:-2px;
-border-radius:10px;
-background:linear-gradient(45deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00c8);
-background-size:400%;
-z-index:-1;
-animation:rgb 6s linear infinite
-}
-
-@keyframes rgb{
-0%{background-position:0}
-100%{background-position:400%}
+button{
+    margin-top:10px;
+    width:100%;
+    padding:11px;
+    border-radius:8px;
+    border:none;
+    background:#000;
+    color:white;
+    font-family:Montserrat;
+    cursor:pointer;
 }
 
 .result{margin-top:12px;font-size:13px}
@@ -119,95 +100,73 @@ animation:rgb 6s linear infinite
 .error{color:#ef4444}
 
 .history{
-margin-top:12px;
-padding:10px;
-border-radius:10px;
-background:#020617;
-border:1px solid #1e293b;
-font-size:12px;
-text-align:left;
+    margin-top:12px;
+    padding:10px;
+    border-radius:10px;
+    background:#020617;
+    border:1px solid #1e293b;
+    font-size:12px;
+    text-align:left;
 }
 
 .history-item{
-margin-top:6px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:6px;
+    margin-top:6px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:6px;
 }
 
 .clear{
-margin-top:10px;
+    margin-top:10px;
 }
 
 .fab{
-position:fixed;
-bottom:90px;
-right:18px;
-width:48px;
-height:48px;
-border-radius:50%;
-background:#000;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-z-index:999;
-}
-
-.fab:before{
-content:"";
-position:absolute;
-top:-2px;left:-2px;right:-2px;bottom:-2px;
-border-radius:50%;
-background:linear-gradient(45deg,#ff0000,#00ffd5,#7a00ff);
-background-size:400%;
-animation:rgb 6s linear infinite;
-z-index:-1;
+    position:fixed;
+    bottom:90px;
+    right:18px;
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:999;
 }
 
 .menu{
-position:fixed;
-bottom:150px;
-right:18px;
-display:flex;
-flex-direction:column;
-gap:10px;
-opacity:0;
-pointer-events:none;
-transform:translateY(10px);
-transition:0.25s;
-z-index:999;
+    position:fixed;
+    bottom:150px;
+    right:18px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    opacity:0;
+    pointer-events:none;
+    transform:translateY(10px);
+    transition:0.25s;
+    z-index:999;
 }
 
 .menu a{
-width:150px;
-padding:10px;
-border-radius:10px;
-background:#000;
-color:white;
-text-align:center;
-font-size:13px;
-text-decoration:none;
-font-family:Montserrat;
-position:relative;
-}
-
-.menu a:before{
-content:"";
-position:absolute;
-top:-2px;left:-2px;right:-2px;bottom:-2px;
-border-radius:12px;
-background:linear-gradient(45deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00c8);
-background-size:400%;
-animation:rgb 6s linear infinite;
-z-index:-1;
+    width:150px;
+    padding:10px;
+    border-radius:10px;
+    background:#000;
+    color:white;
+    text-align:center;
+    font-size:13px;
+    text-decoration:none;
+    font-family:Montserrat;
+    position:relative;
 }
 
 .menu.show{
-opacity:1;
-pointer-events:auto;
-transform:translateY(0);
+    opacity:1;
+    pointer-events:auto;
+    transform:translateY(0);
 }
 </style>
 </head>
@@ -225,22 +184,24 @@ transform:translateY(0);
 <span>🔐Bảo mật</span>
 </div>
 
+<!-- VIP KEY -->
 <div class="box">
-            <h3><i class="fas fa-gem"></i> KEY VIP</h3>
-            <input id="vip" placeholder="Nhập KEY VIP" autocomplete="off">
-            <button class="rgb-btn" onclick="vip()">KÍCH HOẠT VIP</button>
-        </div>
+    <h3><i class="fas fa-gem"></i> KEY VIP</h3>
+    <input id="vip" placeholder="Nhập KEY VIP" autocomplete="off">
+    <button onclick="vip()">KÍCH HOẠT VIP</button>
+</div>
 
-        <div class="box">
-            <h3><i class="fas fa-gift"></i> KEY FREE</h3>
-            <input id="free" placeholder="Nhập KEY FREE" autocomplete="off">
-            <button class="rgb-btn" onclick="freeKey()">NHẬN FREE</button>
+<!-- FREE KEY -->
+<div class="box">
+    <h3><i class="fas fa-gift"></i> KEY FREE</h3>
+    <input id="free" placeholder="Nhập KEY FREE" autocomplete="off">
+    <button onclick="freeKey()">NHẬN FREE</button>
 </div>
 
 <div id="result" class="result"></div>
 
 <div id="history" class="history"></div>
-<button class="rgb-btn clear" onclick="clearHis()">🗑 Xóa lịch sử</button>
+<button class="clear" onclick="clearHis()">🗑 Xóa lịch sử</button>
 
 </div>
 </div>
@@ -254,7 +215,6 @@ transform:translateY(0);
 </div>
 
 <script>
-
 const CONFIG_URL="https://raw.githubusercontent.com/AdminTunDeveloped/TunDeveloped/main/config.json";
 const KEY_URL="https://raw.githubusercontent.com/AdminTunDeveloped/TunDeveloped/main/key.json";
 
@@ -262,87 +222,77 @@ let CONFIG={},KEY_DATA={};
 let history=JSON.parse(localStorage.getItem("his"))||[];
 
 async function load(){
-try{
-CONFIG=await (await fetch(CONFIG_URL+"?t="+Date.now())).json();
-KEY_DATA=await (await fetch(KEY_URL+"?t="+Date.now())).json();
-}catch(e){
-console.log("Lỗi load JSON");
-}
+    try{
+        CONFIG=await (await fetch(CONFIG_URL+"?t="+Date.now())).json();
+        KEY_DATA=await (await fetch(KEY_URL+"?t="+Date.now())).json();
+    }catch(e){
+        console.log("Lỗi load JSON");
+    }
 }
 
 function save(type,link){
-history.unshift({type,link});
-if(history.length>10)history.length=10;
-localStorage.setItem("his",JSON.stringify(history));
-render();
+    history.unshift({type,link});
+    if(history.length>10) history.length=10;
+    localStorage.setItem("his",JSON.stringify(history));
+    render();
 }
 
 function render(){
-let h=document.getElementById("history");
-
-if(history.length==0){
-h.innerHTML="📜 Chưa có lịch sử";
-return;
-}
-
-h.innerHTML="<b>📜 Lịch sử:</b>"+history.map(i=>`
-<div class="history-item">
-<span>${i.type}</span>
-<button class="rgb-btn" onclick="copy('${i.link}')">COPY</button>
-</div>
-`).join("");
+    let h=document.getElementById("history");
+    if(history.length==0){
+        h.innerHTML="📜 Chưa có lịch sử";
+        return;
+    }
+    h.innerHTML="<b>📜 Lịch sử:</b>"+history.map(i=>`
+        <div class="history-item">
+            <span>${i.type}</span>
+            <button onclick="copy('${i.link}')">COPY</button>
+        </div>
+    `).join("");
 }
 
 function copy(t){
-navigator.clipboard.writeText(t);
-alert("Đã copy link");
+    navigator.clipboard.writeText(t);
+    alert("Đã copy link");
 }
 
 function vip(){
-let k=document.getElementById("vip").value.trim();
-let obj=KEY_DATA.personal_keys?.find(x=>x.key.trim()===k);
-
-if(!obj) return err("❌ Key VIP sai");
-
-let link=CONFIG.scripts?.[(obj.platform||"android")+"_full"];
-
-save("💎 VIP",link);
-ok("✔ VIP kích hoạt thành công");
+    let k=document.getElementById("vip").value.trim();
+    let obj=KEY_DATA.personal_keys?.find(x=>x.key.trim()===k);
+    if(!obj) return err("❌ Key VIP sai");
+    let link=CONFIG.scripts?.[(obj.platform||"android")+"_full"];
+    save("💎 VIP",link);
+    ok("✔ VIP kích hoạt thành công");
 }
 
 function freeKey(){
-let k=document.getElementById("free").value.trim();
-
-if(!KEY_DATA.community_keys?.includes(k))
-return err("❌ Key FREE sai");
-
-let link=CONFIG.scripts?.android_free;
-
-save("🎁 FREE",link);
-ok("✔ Nhận FREE thành công");
+    let k=document.getElementById("free").value.trim();
+    if(!KEY_DATA.community_keys?.includes(k)) return err("❌ Key FREE sai");
+    let link=CONFIG.scripts?.android_free;
+    save("🎁 FREE",link);
+    ok("✔ Nhận FREE thành công");
 }
 
 function err(t){
-document.getElementById("result").innerHTML="<div class='error'>"+t+"</div>";
+    document.getElementById("result").innerHTML="<div class='error'>"+t+"</div>";
 }
 
 function ok(t){
-document.getElementById("result").innerHTML="<div class='success'>"+t+"</div>";
+    document.getElementById("result").innerHTML="<div class='success'>"+t+"</div>";
 }
 
 function clearHis(){
-history=[];
-localStorage.removeItem("his");
-render();
+    history=[];
+    localStorage.removeItem("his");
+    render();
 }
 
 function toggle(){
-document.getElementById("menu").classList.toggle("show");
+    document.getElementById("menu").classList.toggle("show");
 }
 
 load();
 render();
-
 </script>
 
 </body>
