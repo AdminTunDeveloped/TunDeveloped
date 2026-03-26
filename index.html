@@ -5,229 +5,255 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TUN DEVELOPED</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@600&family=Inter&display=swap" rel="stylesheet">
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box}
 
-body {
-    font-family: 'Inter', sans-serif;
-    background: #05050a;
-    color: #fff;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
+body{
+font-family:Inter;
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
 }
 
-/* Background */
-body::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(rgba(103,232,249,0.018) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(103,232,249,0.018) 1px, transparent 1px);
-    background-size: 70px 70px;
-    z-index: -2;
+/* CARD */
+.main{width:100%;max-width:420px;padding:20px}
+
+.card{
+background:rgba(2,6,23,0.85);
+backdrop-filter:blur(20px);
+border-radius:18px;
+padding:20px;
+box-shadow:0 0 40px rgba(0,255,150,0.15);
+text-align:center;
+border:1px solid rgba(255,255,255,0.05);
 }
 
-body::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 20% 30%, rgba(167,139,250,0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 75%, rgba(103,232,249,0.15) 0%, transparent 50%);
-    z-index: -1;
+/* TITLE RGB */
+.title{
+font-family:Bebas Neue;
+font-size:40px;
+letter-spacing:4px;
+background:linear-gradient(90deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00c8);
+background-size:400%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:rainbow 8s linear infinite;
 }
 
-.main { width: 100%; max-width: 460px; padding: 20px; }
-
-.card {
-    background: rgba(15, 23, 42, 0.78);
-    backdrop-filter: blur(28px);
-    border-radius: 32px;
-    border: 1px solid rgba(103,232,249,0.3);
-    padding: 38px 32px 32px;
-    box-shadow: 0 40px 80px -20px rgba(0,0,0,0.75), inset 0 0 80px rgba(103,232,249,0.12);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    min-height: 620px;
+@keyframes rainbow{
+0%{background-position:0}
+100%{background-position:400%}
 }
 
-/* Title & Tag */
-.header { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 12px; }
-.title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 48px;
-    letter-spacing: 6px;
-    background: linear-gradient(90deg, #67e8f9, #c084fc, #f472b6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+/* TAG */
+.tag{
+margin-top:8px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:6px;
 }
 
-.tag {
-    margin: 16px 0 30px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+.tag span{
+font-size:11px;
+background:#020617;
+padding:5px 8px;
+border-radius:8px;
+border:1px solid #1e293b;
+color:#94a3b8;
 }
 
-.tag span {
-    font-size: 13px;
-    padding: 8px 18px;
-    border-radius: 9999px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(103,232,249,0.35);
-    color: #c4d0ff;
+/* BOX */
+.box{
+margin-top:15px;
+padding:14px;
+border-radius:12px;
+background:#020617;
+border:1px solid #1e293b;
+text-align:left;
+transition:0.3s;
 }
 
-/* Box & Input */
-.box {
-    margin-top: 22px;
-    padding: 24px;
-    border-radius: 24px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(103,232,249,0.25);
+.box:hover{
+border-color:#22c55e;
+box-shadow:0 0 15px rgba(34,197,94,0.2);
 }
 
-.box h3 { font-size: 16.5px; color: #67e8f9; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.box h3{font-size:13px;color:#22c55e;margin-bottom:6px}
 
-input {
-    width: 100%;
-    padding: 17px 20px;
-    border-radius: 16px;
-    border: 1px solid rgba(103,232,249,0.3);
-    background: rgba(0,0,0,0.6);
-    color: #fff;
-    font-size: 16px;
+/* INPUT */
+input{
+width:100%;
+padding:11px;
+border-radius:8px;
+border:1px solid #1e293b;
+background:#000;
+color:white;
+font-size:13px;
+transition:0.25s;
 }
 
-input:focus {
-    border-color: #67e8f9;
-    box-shadow: 0 0 0 5px rgba(103,232,249,0.25);
+input:focus{
+outline:none;
+border-color:#00ffd5;
+box-shadow:0 0 10px rgba(0,255,213,0.4);
 }
 
-/* Button */
-.rgb-btn {
-    margin-top: 14px;
-    width: 100%;
-    padding: 17px;
-    border: none;
-    border-radius: 16px;
-    background: linear-gradient(90deg, #67e8f9, #a78bfa, #f472b6);
-    color: #0f172a;
-    font-weight: 700;
-    font-size: 16.5px;
-    cursor: pointer;
-    box-shadow: 0 12px 35px rgba(103,232,249,0.4);
+/* BUTTON RGB XỊN */
+.rgb-btn{
+margin-top:10px;
+width:100%;
+padding:11px;
+border-radius:8px;
+border:none;
+background:#000;
+color:white;
+font-family:Montserrat;
+cursor:pointer;
+position:relative;
+z-index:1;
+overflow:hidden;
+transition:0.2s;
 }
 
-.rgb-btn:hover { transform: translateY(-3px); box-shadow: 0 20px 45px rgba(103,232,249,0.55); }
-
-/* Result */
-.result { margin: 22px 0; min-height: 34px; font-size: 15.5px; font-weight: 600; }
-.success { color: #67e8f9; }
-.error { color: #f87171; }
-
-/* HISTORY - ĐÃ FIX SCROLL TRÊN MOBILE */
-.history {
-    margin-top: 26px;
-    flex: 1;
-    padding: 20px;
-    border-radius: 22px;
-    background: rgba(255,255,255,0.045);
-    border: 1px solid rgba(103,232,249,0.25);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;   /* <-- Fix quan trọng cho mobile */
-    scroll-behavior: smooth;
-    max-height: 280px;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+.rgb-btn:before{
+content:"";
+position:absolute;
+top:-2px;left:-2px;right:-2px;bottom:-2px;
+border-radius:10px;
+background:linear-gradient(45deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00c8);
+background-size:400%;
+z-index:-1;
+animation:rgb 8s linear infinite;
+filter:blur(2px);
 }
 
-/* Scrollbar đẹp */
-.history::-webkit-scrollbar { width: 7px; }
-.history::-webkit-scrollbar-thumb {
-    background: linear-gradient(#67e8f9, #c084fc);
-    border-radius: 10px;
+/* hover + click */
+.rgb-btn:hover{
+transform:translateY(-2px);
+box-shadow:0 0 20px rgba(0,255,213,0.4);
 }
 
-/* History item */
-.history-item {
-    padding: 13px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.history-item:last-child { border-bottom: none; }
-
-/* FAB & Menu - ĐÃ SỬA HIỆU ỨNG */
-.fab {
-    position: fixed;
-    bottom: 95px;
-    right: 24px;
-    width: 62px;
-    height: 62px;
-    background: rgba(15,23,42,0.95);
-    border: 3px solid #67e8f9;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    cursor: pointer;
-    box-shadow: 0 15px 40px rgba(103,232,249,0.35);
-    z-index: 1000;
-    transition: all 0.3s ease;
+.rgb-btn:active{
+transform:scale(0.95);
 }
 
-.fab:hover {
-    background: #67e8f9;
-    color: #0f172a;
-    transform: scale(1.15);
+@keyframes rgb{
+0%{background-position:0}
+100%{background-position:400%}
 }
 
-.menu {
-    position: fixed;
-    bottom: 175px;
-    right: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(20px) scale(0.95);
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 999;
+/* RESULT */
+.result{margin-top:12px;font-size:13px}
+.success{color:#22c55e}
+.error{color:#ef4444}
+
+/* HISTORY */
+.history{
+margin-top:12px;
+padding:10px;
+border-radius:10px;
+background:#020617;
+border:1px solid #1e293b;
+font-size:12px;
+text-align:left;
+max-height:160px;
+overflow:auto;
 }
 
-.menu.show {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0) scale(1);
+.history-item{
+margin-top:6px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:6px;
 }
 
-.menu a {
-    width: 195px;
-    padding: 16px 22px;
-    background: rgba(15,23,42,0.95);
-    border: 1px solid rgba(103,232,249,0.3);
-    border-radius: 18px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 15px;
-    text-align: center;
-    transition: 0.3s;
+/* FAB */
+.fab{
+position:fixed;
+bottom:90px;
+right:18px;
+width:50px;
+height:50px;
+border-radius:50%;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+z-index:999;
+transition:0.25s;
 }
 
-.menu a:hover {
-    background: rgba(103,232,249,0.2);
-    transform: translateX(-8px);
+.fab:hover{
+transform:scale(1.1);
+}
+
+.fab:before{
+content:"";
+position:absolute;
+top:-2px;left:-2px;right:-2px;bottom:-2px;
+border-radius:50%;
+background:linear-gradient(45deg,#ff0000,#00ffd5,#7a00ff);
+background-size:400%;
+animation:rgb 6s linear infinite;
+z-index:-1;
+}
+
+/* MENU */
+.menu{
+position:fixed;
+bottom:150px;
+right:18px;
+display:flex;
+flex-direction:column;
+gap:10px;
+opacity:0;
+pointer-events:none;
+transform:translateY(10px);
+transition:0.25s;
+z-index:999;
+}
+
+.menu a{
+width:150px;
+padding:10px;
+border-radius:10px;
+background:#000;
+color:white;
+text-align:center;
+font-size:13px;
+text-decoration:none;
+font-family:Montserrat;
+position:relative;
+transition:0.25s;
+}
+
+.menu a:hover{
+transform:translateX(-5px);
+}
+
+.menu a:before{
+content:"";
+position:absolute;
+top:-2px;left:-2px;right:-2px;bottom:-2px;
+border-radius:12px;
+background:linear-gradient(45deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00c8);
+background-size:400%;
+animation:rgb 8s linear infinite;
+z-index:-1;
+}
+
+.menu.show{
+opacity:1;
+pointer-events:auto;
+transform:translateY(0);
 }
 </style>
 </head>
@@ -235,144 +261,134 @@ input:focus {
 <body>
 
 <div class="main">
-    <div class="card">
-        <div class="header">
-            <i class="fas fa-bolt" style="font-size:38px;color:#67e8f9;"></i>
-            <div class="title">TUN DEVELOPED</div>
-        </div>
-        
-        <div class="tag">
-            <span>🟢 Server Online</span>
-            <span>🚀 Hiệu suất cao</span>
-            <span>🔐 Bảo mật</span>
-        </div>
+<div class="card">
 
-        <div class="box">
-            <h3><i class="fas fa-gem"></i> KEY VIP</h3>
-            <input id="vip" placeholder="Nhập KEY VIP" autocomplete="off">
-            <button class="rgb-btn" onclick="vip()">KÍCH HOẠT VIP</button>
-        </div>
+<div class="title">TUN DEVELOPED</div>
 
-        <div class="box">
-            <h3><i class="fas fa-gift"></i> KEY FREE</h3>
-            <input id="free" placeholder="Nhập KEY FREE" autocomplete="off">
-            <button class="rgb-btn" onclick="freeKey()">NHẬN FREE</button>
-        </div>
-
-        <div id="result" class="result"></div>
-
-        <div id="history" class="history"></div>
-
-        <button class="rgb-btn" style="background:#1e2937; color:#e2e8f0; margin-top:16px;" onclick="clearHis()">
-            🗑 Xóa lịch sử
-        </button>
-    </div>
+<div class="tag">
+<span>🟢 Server Online</span>
+<span>🚀 Hiệu suất cao</span>
+<span>🔐 Bảo mật</span>
 </div>
 
-<!-- Nút hỗ trợ -->
+<div class="box">
+<h3>💎 KEY VIP</h3>
+<input id="vip" placeholder="Nhập KEY VIP">
+<button class="rgb-btn" onclick="vip()">Kích hoạt</button>
+</div>
+
+<div class="box">
+<h3>🎁 KEY FREE</h3>
+<input id="free" placeholder="Nhập KEY FREE">
+<button class="rgb-btn" onclick="freeKey()">Nhận Free</button>
+</div>
+
+<div id="result" class="result"></div>
+
+<div id="history" class="history"></div>
+<button class="rgb-btn clear" onclick="clearHis()">🗑 Xóa lịch sử</button>
+
+</div>
+</div>
+
 <div class="fab" onclick="toggle()">💬</div>
 
-<!-- Menu hỗ trợ -->
 <div id="menu" class="menu">
-    <a href="https://zalo.me/0378099746" target="_blank"><i class="fab fa-whatsapp"></i> Zalo</a>
-    <a href="https://t.me/TunDeveloped" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
-    <a href="https://www.facebook.com/share/1Ea2ZvmwRa/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+<a href="https://zalo.me/0378099746" target="_blank">💬 Zalo</a>
+<a href="https://t.me/TunDeveloped" target="_blank">📢 Telegram</a>
+<a href="https://www.facebook.com/share/1Ea2ZvmwRa/?mibextid=wwXIfr">🌐 Facebook</a>
 </div>
 
 <script>
-// Script giữ nguyên chức năng cũ
-const CONFIG_URL = "https://raw.githubusercontent.com/AdminTunDeveloped/TunDeveloped/main/config.json";
-const KEY_URL = "https://raw.githubusercontent.com/AdminTunDeveloped/TunDeveloped/main/key.json";
 
-let CONFIG = {}, KEY_DATA = {};
-let history = JSON.parse(localStorage.getItem("his")) || [];
+const CONFIG_URL="https://raw.githubusercontent.com/AdminTunDeveloped/TunDeveloped/main/config.json";
+const KEY_URL="https://raw.githubusercontent.com/AdminTunDeveloped/TunDeveloped/main/key.json";
 
-async function load() {
-    try {
-        CONFIG = await (await fetch(CONFIG_URL + "?t=" + Date.now())).json();
-        KEY_DATA = await (await fetch(KEY_URL + "?t=" + Date.now())).json();
-    } catch(e) { console.log("Lỗi load JSON"); }
+let CONFIG={},KEY_DATA={};
+let history=JSON.parse(localStorage.getItem("his"))||[];
+
+async function load(){
+try{
+CONFIG=await (await fetch(CONFIG_URL+"?t="+Date.now())).json();
+KEY_DATA=await (await fetch(KEY_URL+"?t="+Date.now())).json();
+}catch(e){
+console.log("Lỗi load JSON");
+}
 }
 
-function save(type, link) {
-    history.unshift({type, link});
-    if (history.length > 12) history.length = 12;
-    localStorage.setItem("his", JSON.stringify(history));
-    render();
+function save(type,link){
+history.unshift({type,link});
+if(history.length>10)history.length=10;
+localStorage.setItem("his",JSON.stringify(history));
+render();
 }
 
-function render() {
-    const h = document.getElementById("history");
-    if (history.length === 0) {
-        h.innerHTML = `<span style="color:#64748b;font-style:italic;display:block;text-align:center;padding:30px 0;">Chưa có lịch sử</span>`;
-        return;
-    }
-    h.innerHTML = history.map(i => `
-        <div class="history-item">
-            <span>${i.type}</span>
-            <button class="rgb-btn" style="padding:8px 20px;font-size:13px;width:auto;margin:0;" onclick="copy('${i.link}')">COPY</button>
-        </div>
-    `).join("");
+function render(){
+let h=document.getElementById("history");
+
+if(history.length==0){
+h.innerHTML="📜 Chưa có lịch sử";
+return;
 }
 
-function copy(t) {
-    navigator.clipboard.writeText(t).then(() => alert("✅ Đã copy link!"));
+h.innerHTML="<b>📜 Lịch sử:</b>"+history.map(i=>`
+<div class="history-item">
+<span>${i.type}</span>
+<button class="rgb-btn" onclick="copy('${i.link}')">COPY</button>
+</div>
+`).join("");
 }
 
-function vip() {
-    let k = document.getElementById("vip").value.trim();
-    let obj = KEY_DATA.personal_keys?.find(x => x.key.trim() === k);
-    if (!obj) return err("❌ Key VIP không đúng");
-    let link = CONFIG.scripts?.[(obj.platform || "android") + "_full"];
-    save("💎 VIP", link);
-    ok("✅ VIP kích hoạt thành công!");
+function copy(t){
+navigator.clipboard.writeText(t);
+alert("Đã copy link");
 }
 
-function freeKey() {
-    let k = document.getElementById("free").value.trim();
-    if (!KEY_DATA.community_keys?.includes(k)) return err("❌ Key FREE không đúng");
-    let link = CONFIG.scripts?.android_free;
-    save("🎁 FREE", link);
-    ok("✅ Nhận FREE thành công!");
+function vip(){
+let k=document.getElementById("vip").value.trim();
+let obj=KEY_DATA.personal_keys?.find(x=>x.key.trim()===k);
+
+if(!obj) return err("❌ Key VIP sai");
+
+let link=CONFIG.scripts?.[(obj.platform||"android")+"_full"];
+
+save("💎 VIP",link);
+ok("✔ VIP kích hoạt thành công");
 }
 
-function err(t) {
-    const res = document.getElementById("result");
-    res.innerHTML = `<span class='error'>${t}</span>`;
-    setTimeout(() => res.innerHTML = '', 5000);
+function freeKey(){
+let k=document.getElementById("free").value.trim();
+
+if(!KEY_DATA.community_keys?.includes(k))
+return err("❌ Key FREE sai");
+
+let link=CONFIG.scripts?.android_free;
+
+save("🎁 FREE",link);
+ok("✔ Nhận FREE thành công");
 }
 
-function ok(t) {
-    const res = document.getElementById("result");
-    res.innerHTML = `<span class='success'>${t}</span>`;
-    setTimeout(() => res.innerHTML = '', 5000);
+function err(t){
+document.getElementById("result").innerHTML="<div class='error'>"+t+"</div>";
 }
 
-function clearHis() {
-    if (confirm("Xóa toàn bộ lịch sử?")) {
-        history = [];
-        localStorage.removeItem("his");
-        render();
-    }
+function ok(t){
+document.getElementById("result").innerHTML="<div class='success'>"+t+"</div>";
 }
 
-// Toggle menu - đã tối ưu
-function toggle() {
-    const menu = document.getElementById("menu");
-    menu.classList.toggle("show");
+function clearHis(){
+history=[];
+localStorage.removeItem("his");
+render();
 }
 
-// Đóng menu khi click ra ngoài (tùy chọn)
-document.addEventListener('click', function(e) {
-    const menu = document.getElementById("menu");
-    const fab = document.querySelector('.fab');
-    if (!menu.contains(e.target) && !fab.contains(e.target)) {
-        menu.classList.remove("show");
-    }
-});
+function toggle(){
+document.getElementById("menu").classList.toggle("show");
+}
 
 load();
 render();
+
 </script>
 
 </body>
