@@ -1,4 +1,4 @@
-l<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
@@ -23,22 +23,21 @@ body{
 .main{width:100%;max-width:420px;padding:20px}
 
 .card{
-  background:linear-gradient(180deg,#1a0000,#330000dd);
+  background:linear-gradient(180deg,#1a0000,#330000);
   border-radius:20px;
   padding:20px;
-  box-shadow:0 0 60px rgba(255,0,0,0.2);
+  box-shadow:0 0 50px rgba(255,0,0,0.7);
   text-align:center;
-  border:1px solid rgba(255,0,0,0.2);
+  border:1px solid #ff1a1a;
 }
 
 /* TITLE */
 .title{
-  font-family:Bebas Neue;
+  font-family:'Bebas Neue',sans-serif;
   font-size:42px;
   letter-spacing:4px;
-  background:linear-gradient(90deg,#ff4d4d,#ff1a1a,#990000);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+  color:#ff0000;
+  text-shadow:0 0 10px #ff4d4d,0 0 20px #ff1a1a;
 }
 
 /* TAG */
@@ -54,9 +53,10 @@ body{
   font-size:12px;
   padding:6px 12px;
   border-radius:999px;
-  background:#1a0000;
-  border:1px solid #660000;
-  color:#ff9999;
+  background:#330000;
+  border:1px solid #ff1a1a;
+  color:#ff6666;
+  text-shadow:0 0 4px #ff1a1a;
 }
 
 /* BOX */
@@ -64,8 +64,9 @@ body{
   margin-top:18px;
   padding:18px;
   border-radius:18px;
-  background:#1a0000;
-  border:1px solid #660000;
+  background:#330000;
+  border:1px solid #ff1a1a;
+  box-shadow:0 0 20px rgba(255,0,0,0.5);
 }
 
 /* TITLE BOX */
@@ -75,8 +76,9 @@ body{
   gap:10px;
   font-size:15px;
   font-weight:600;
-  color:#ff4d4d;
+  color:#ff3333;
   margin-bottom:10px;
+  text-shadow:0 0 8px #ff1a1a;
 }
 
 .box-title span{
@@ -88,20 +90,21 @@ input{
   width:100%;
   padding:14px;
   border-radius:14px;
-  border:1px solid #660000;
+  border:1px solid #ff1a1a;
   background:#000;
   color:white;
   font-size:14px;
   margin-bottom:12px;
+  box-shadow:0 0 8px #ff1a1a inset;
 }
 
 input:focus{
   outline:none;
   border-color:#ff4d4d;
-  box-shadow:0 0 10px rgba(255,77,77,0.6);
+  box-shadow:0 0 12px #ff4d4d inset;
 }
 
-/* BUTTON RED-GLOW */
+/* BUTTON RED-NEON */
 .btn{
   width:100%;
   padding:14px;
@@ -112,36 +115,38 @@ input:focus{
   cursor:pointer;
   background:linear-gradient(90deg,#ff1a1a,#cc0000);
   color:white;
+  text-shadow:0 0 5px #ff9999;
+  box-shadow:0 0 15px #ff1a1a,0 0 30px #ff4d4d;
   transition:0.25s;
-  box-shadow:0 0 10px rgba(255,0,0,0.4);
 }
 
 .btn:hover{
   transform:translateY(-2px);
-  box-shadow:0 0 20px rgba(255,0,0,0.8),0 0 40px rgba(255,77,77,0.6);
+  box-shadow:0 0 25px #ff1a1a,0 0 50px #ff4d4d;
 }
 
 .btn:active{
   transform:scale(0.96);
-  box-shadow:0 0 10px rgba(255,0,0,0.4);
+  box-shadow:0 0 15px #ff1a1a,0 0 30px #ff4d4d;
 }
 
 /* RESULT */
 .result{margin-top:12px;font-size:13px}
-.success{color:#22c55e}
-.error{color:#ff4d4d}
+.success{color:#22c55e;text-shadow:0 0 5px #22c55e}
+.error{color:#ff3333;text-shadow:0 0 5px #ff1a1a}
 
 /* HISTORY */
 .history{
   margin-top:12px;
   padding:10px;
   border-radius:10px;
-  background:#1a0000;
-  border:1px solid #660000;
+  background:#330000;
+  border:1px solid #ff1a1a;
   font-size:12px;
   text-align:left;
   max-height:160px;
   overflow:auto;
+  box-shadow:0 0 10px rgba(255,0,0,0.5);
 }
 
 .history-item{
@@ -167,13 +172,8 @@ input:focus{
   z-index:999;
   color:white;
   font-size:22px;
-  box-shadow:0 0 15px rgba(255,0,0,0.7);
+  box-shadow:0 0 25px #ff1a1a,0 0 50px #ff4d4d;
   transition:0.25s;
-}
-
-.fab:hover{
-  transform:translateY(-2px);
-  box-shadow:0 0 30px rgba(255,0,0,1),0 0 50px rgba(255,77,77,0.7);
 }
 
 /* MENU */
@@ -195,16 +195,12 @@ input:focus{
   width:160px;
   padding:12px;
   border-radius:14px;
-  background:#1a0000;
+  background:#330000;
   color:white;
   text-align:center;
   text-decoration:none;
-  border:1px solid #660000;
-  transition:0.25s;
-}
-
-.menu a:hover{
-  box-shadow:0 0 20px rgba(255,0,0,0.7);
+  border:1px solid #ff1a1a;
+  box-shadow:0 0 10px #ff1a1a;
 }
 
 .menu.show{
@@ -225,11 +221,24 @@ input:focus{
 }
 
 .modal-box{
-  background:#1a0000;
+  background:#330000;
   padding:20px;
   border-radius:16px;
   text-align:center;
-  border:1px solid #ff4d4d;
+  border:1px solid #ff1a1a;
+  box-shadow:0 0 20px #ff1a1a;
+  width:90%;
+  max-width:300px;
+}
+
+.modal-box h3{
+  color:#ff3333;
+  text-shadow:0 0 10px #ff4d4d;
+}
+
+.modal-box p{
+  color:white;
+  text-shadow:0 0 6px #ff1a1a;
 }
 
 </style>
@@ -238,61 +247,58 @@ input:focus{
 <body>
 
 <div class="main">
-  <div class="card">
+<div class="card">
 
-    <div class="title">TUN DEVELOPED</div>
+<div class="title">TUN DEVELOPED</div>
 
-    <div class="tag">
-      <span>🟢 Server Online</span>
-      <span>🚀 Hiệu suất cao</span>
-      <span>🔐 Bảo mật</span>
-    </div>
+<div class="tag">
+<span>🟢 Server Online</span>
+<span>🚀 Hiệu suất cao</span>
+<span>🔐 Bảo mật</span>
+</div>
 
-    <div class="box">
-      <div class="box-title"><span>💎</span> KEY VIP</div>
-      <input id="vip" placeholder="Nhập KEY VIP">
-      <button class="btn" onclick="vip()">KÍCH HOẠT VIP</button>
-    </div>
+<div class="box">
+<div class="box-title"><span>💎</span> KEY VIP</div>
+<input id="vip" placeholder="Nhập KEY VIP">
+<button class="btn" onclick="vip()">KÍCH HOẠT VIP</button>
+</div>
 
-    <div class="box">
-      <div class="box-title"><span>🎁</span> KEY FREE</div>
-      <input id="free" placeholder="Nhập KEY FREE">
-      <button class="btn" onclick="freeKey()">NHẬN KEY FREE</button>
-    </div>
+<div class="box">
+<div class="box-title"><span>🎁</span> KEY FREE</div>
+<input id="free" placeholder="Nhập KEY FREE">
+<button class="btn" onclick="freeKey()">NHẬN KEY FREE</button>
+</div>
 
-    <div id="result" class="result"></div>
+<div id="result" class="result"></div>
 
-    <div id="history" class="history"></div>
-    <button class="btn" onclick="clearHis()">🗑 Xóa lịch sử</button>
+<div id="history" class="history"></div>
+<button class="btn" onclick="clearHis()">🗑 Xóa lịch sử</button>
 
-  </div>
+</div>
 </div>
 
 <div class="fab" onclick="toggle()">💬</div>
 
 <div id="menu" class="menu">
-  <a href="https://zalo.me/0378099746" target="_blank">💬 Zalo</a>
-  <a href="https://t.me/TunDeveloped" target="_blank">📢 Telegram</a>
-  <a href="https://www.facebook.com/share/1Ea2ZvmwRa/?mibextid=wwXIfr">🌐 Facebook</a>
+<a href="https://zalo.me/0378099746" target="_blank">💬 Zalo</a>
+<a href="https://t.me/TunDeveloped" target="_blank">📢 Telegram</a>
+<a href="https://www.facebook.com/share/1Ea2ZvmwRa/?mibextid=wwXIfr">🌐 Facebook</a>
 </div>
 
-<!-- POPUP -->
 <div id="popup" class="modal" style="display:none">
-  <div class="modal-box">
-    <h3 style="color:#ff4d4d">🎉 ƯU ĐÃI</h3>
-    <p style="margin:10px 0;font-size:14px">
-      🔥 Nhập KEY FREE nhận tool miễn phí<br>
-      💎 VIP đang giảm giá cực mạnh
-    </p>
-    <button class="btn" onclick="closePopup()">OK</button>
-  </div>
+<div class="modal-box">
+<h3>🎉 ƯU ĐÃI</h3>
+<p>
+🔥 Nhập KEY FREE nhận tool miễn phí<br>
+💎 VIP đang giảm giá cực mạnh
+</p>
+<button class="btn" onclick="closePopup()">OK</button>
+</div>
 </div>
 
 <script>
-
 const CONFIG_URL="https://raw.githubusercontent.com/AdminTunDeveloped/TunDeveloped/main/config.json";
 const KEY_URL="https://raw.githubusercontent.com/AdminTunDeveloped/TunDeveloped/main/key.json";
-
 let CONFIG={},KEY_DATA={};
 let history=JSON.parse(localStorage.getItem("his"))||[];
 
@@ -303,14 +309,8 @@ async function load(){
   }catch(e){}
 }
 
-/* POPUP */
-window.onload=()=>{
-  document.getElementById("popup").style.display="flex";
-}
-
-function closePopup(){
-  document.getElementById("popup").style.display="none";
-}
+window.onload=()=>{document.getElementById("popup").style.display="flex";}
+function closePopup(){document.getElementById("popup").style.display="none";}
 
 function save(type,link){
   history.unshift({type,link});
@@ -321,70 +321,36 @@ function save(type,link){
 
 function render(){
   let h=document.getElementById("history");
-
-  if(history.length==0){
-    h.innerHTML="📜 Chưa có lịch sử";
-    return;
-  }
-
+  if(history.length==0){h.innerHTML="📜 Chưa có lịch sử";return;}
   h.innerHTML="<b>📜 Lịch sử:</b>"+history.map(i=>`
     <div class="history-item">
       <span>${i.type}</span>
       <button class="btn" onclick="copy('${i.link}')">COPY</button>
-    </div>
-  `).join("");
+    </div>`).join("");
 }
 
-function copy(t){
-  navigator.clipboard.writeText(t);
-  alert("Đã copy link");
-}
+function copy(t){navigator.clipboard.writeText(t);alert("Đã copy link");}
 
 function vip(){
   let k=document.getElementById("vip").value.trim();
   let obj=KEY_DATA.personal_keys?.find(x=>x.key.trim()===k);
-
   if(!obj) return err("❌ Key VIP sai");
-
   let link=CONFIG.scripts?.[(obj.platform||"android")+"_full"];
-
-  save("💎 VIP",link);
-  ok("✔ VIP kích hoạt thành công");
+  save("💎 VIP",link);ok("✔ VIP kích hoạt thành công");
 }
 
 function freeKey(){
   let k=document.getElementById("free").value.trim();
-
-  if(!KEY_DATA.community_keys?.includes(k))
-    return err("❌ Key FREE sai");
-
+  if(!KEY_DATA.community_keys?.includes(k)) return err("❌ Key FREE sai");
   let link=CONFIG.scripts?.android_free;
-
-  save("🎁 FREE",link);
-  ok("✔ Nhận FREE thành công");
+  save("🎁 FREE",link);ok("✔ Nhận FREE thành công");
 }
 
-function err(t){
-  document.getElementById("result").innerHTML="<div class='error'>"+t+"</div>";
-}
-
-function ok(t){
-  document.getElementById("result").innerHTML="<div class='success'>"+t+"</div>";
-}
-
-function clearHis(){
-  history=[];
-  localStorage.removeItem("his");
-  render();
-}
-
-function toggle(){
-  document.getElementById("menu").classList.toggle("show");
-}
-
-load();
-render();
-
+function err(t){document.getElementById("result").innerHTML="<div class='error'>"+t+"</div>";}
+function ok(t){document.getElementById("result").innerHTML="<div class='success'>"+t+"</div>";}
+function clearHis(){history=[];localStorage.removeItem("his");render();}
+function toggle(){document.getElementById("menu").classList.toggle("show");}
+load();render();
 </script>
 
 </body>
