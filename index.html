@@ -10,9 +10,10 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
+/* BODY */
 body{
   font-family:Inter;
-  background:#000;
+  background:#0a0a0a;
   color:#fff;
   display:flex;
   justify-content:center;
@@ -20,24 +21,26 @@ body{
   min-height:100vh;
 }
 
+/* MAIN CARD */
 .main{width:100%;max-width:420px;padding:20px}
 
 .card{
-  background:linear-gradient(180deg,#1a0000,#330000);
+  background: linear-gradient(180deg,#100000,#1a0000);
   border-radius:20px;
   padding:20px;
-  box-shadow:0 0 50px rgba(255,0,0,0.7);
+  box-shadow: 0 0 30px rgba(255,0,0,0.2);
   text-align:center;
-  border:1px solid #ff1a1a;
+  border:1px solid rgba(255,0,0,0.3);
 }
 
 /* TITLE */
 .title{
-  font-family:'Bebas Neue',sans-serif;
+  font-family:'Bebas Neue', sans-serif;
   font-size:42px;
   letter-spacing:4px;
-  color:#ff0000;
-  text-shadow:0 0 10px #ff4d4d,0 0 20px #ff1a1a;
+  color:#ff3b3b;
+  text-shadow: 0 0 8px #ff3b3b, 0 0 15px #ff0000, 0 0 25px #ff1a1a;
+  margin-bottom:12px;
 }
 
 /* TAG */
@@ -53,10 +56,9 @@ body{
   font-size:12px;
   padding:6px 12px;
   border-radius:999px;
-  background:#330000;
-  border:1px solid #ff1a1a;
-  color:#ff6666;
-  text-shadow:0 0 4px #ff1a1a;
+  background:#1a0000;
+  border:1px solid #330000;
+  color:#ff6b6b;
 }
 
 /* BOX */
@@ -64,9 +66,9 @@ body{
   margin-top:18px;
   padding:18px;
   border-radius:18px;
-  background:#330000;
-  border:1px solid #ff1a1a;
-  box-shadow:0 0 20px rgba(255,0,0,0.5);
+  background:#1a0000;
+  border:1px solid #330000;
+  box-shadow: inset 0 0 5px rgba(255,0,0,0.2);
 }
 
 /* TITLE BOX */
@@ -76,9 +78,8 @@ body{
   gap:10px;
   font-size:15px;
   font-weight:600;
-  color:#ff3333;
+  color:#ff4d4d;
   margin-bottom:10px;
-  text-shadow:0 0 8px #ff1a1a;
 }
 
 .box-title span{
@@ -90,21 +91,20 @@ input{
   width:100%;
   padding:14px;
   border-radius:14px;
-  border:1px solid #ff1a1a;
-  background:#000;
+  border:1px solid #330000;
+  background:#0d0000;
   color:white;
   font-size:14px;
   margin-bottom:12px;
-  box-shadow:0 0 8px #ff1a1a inset;
 }
 
 input:focus{
   outline:none;
   border-color:#ff4d4d;
-  box-shadow:0 0 12px #ff4d4d inset;
+  box-shadow: 0 0 12px rgba(255,77,77,0.4);
 }
 
-/* BUTTON RED-NEON */
+/* BUTTON */
 .btn{
   width:100%;
   padding:14px;
@@ -113,40 +113,42 @@ input:focus{
   font-weight:700;
   font-size:15px;
   cursor:pointer;
-  background:linear-gradient(90deg,#ff1a1a,#cc0000);
+  background: linear-gradient(135deg,#990000,#ff1a1a);
   color:white;
-  text-shadow:0 0 5px #ff9999;
-  box-shadow:0 0 15px #ff1a1a,0 0 30px #ff4d4d;
-  transition:0.25s;
+  text-shadow: 0 0 2px black;
+  transition: 0.25s;
+  box-shadow: 0 0 5px rgba(255,0,0,0.3);
 }
 
 .btn:hover{
   transform:translateY(-2px);
-  box-shadow:0 0 25px #ff1a1a,0 0 50px #ff4d4d;
+  box-shadow:0 0 20px rgba(255,0,0,0.5);
 }
 
 .btn:active{
   transform:scale(0.96);
-  box-shadow:0 0 15px #ff1a1a,0 0 30px #ff4d4d;
 }
 
 /* RESULT */
-.result{margin-top:12px;font-size:13px}
-.success{color:#22c55e;text-shadow:0 0 5px #22c55e}
-.error{color:#ff3333;text-shadow:0 0 5px #ff1a1a}
+.result{
+  margin-top:12px;
+  font-size:13px;
+}
+.success{color:#ff6b00}
+.error{color:#ff1a1a}
 
 /* HISTORY */
 .history{
   margin-top:12px;
   padding:10px;
   border-radius:10px;
-  background:#330000;
-  border:1px solid #ff1a1a;
+  background:#1a0000;
+  border:1px solid #330000;
   font-size:12px;
   text-align:left;
   max-height:160px;
   overflow:auto;
-  box-shadow:0 0 10px rgba(255,0,0,0.5);
+  box-shadow: inset 0 0 8px rgba(255,0,0,0.2);
 }
 
 .history-item{
@@ -164,7 +166,7 @@ input:focus{
   width:55px;
   height:55px;
   border-radius:50%;
-  background:linear-gradient(90deg,#ff1a1a,#cc0000);
+  background: linear-gradient(135deg,#990000,#ff1a1a);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -172,8 +174,12 @@ input:focus{
   z-index:999;
   color:white;
   font-size:22px;
-  box-shadow:0 0 25px #ff1a1a,0 0 50px #ff4d4d;
+  box-shadow:0 0 15px rgba(255,0,0,0.5);
   transition:0.25s;
+}
+
+.fab:hover{
+  box-shadow:0 0 25px rgba(255,0,0,0.7);
 }
 
 /* MENU */
@@ -195,12 +201,12 @@ input:focus{
   width:160px;
   padding:12px;
   border-radius:14px;
-  background:#330000;
+  background:#1a0000;
   color:white;
   text-align:center;
   text-decoration:none;
-  border:1px solid #ff1a1a;
-  box-shadow:0 0 10px #ff1a1a;
+  border:1px solid #330000;
+  box-shadow: 0 0 5px rgba(255,0,0,0.3);
 }
 
 .menu.show{
@@ -209,11 +215,11 @@ input:focus{
   transform:translateY(0);
 }
 
-/* MODAL ƯU ĐÃI */
+/* MODAL */
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.85);
+  background:rgba(0,0,0,0.8);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -221,24 +227,26 @@ input:focus{
 }
 
 .modal-box{
-  background:#330000;
+  background:#1a0000;
   padding:20px;
   border-radius:16px;
   text-align:center;
-  border:1px solid #ff1a1a;
-  box-shadow:0 0 20px #ff1a1a;
+  border:1px solid #ff4d4d;
+  box-shadow: 0 0 15px rgba(255,0,0,0.3);
   width:90%;
   max-width:300px;
 }
 
 .modal-box h3{
-  color:#ff3333;
-  text-shadow:0 0 10px #ff4d4d;
+  color:#ff4d4d;
+  text-shadow: 0 0 6px #ff1a1a;
+  margin-bottom:10px;
 }
 
 .modal-box p{
   color:white;
-  text-shadow:0 0 6px #ff1a1a;
+  font-size:14px;
+  line-height:1.4;
 }
 
 </style>
@@ -247,110 +255,124 @@ input:focus{
 <body>
 
 <div class="main">
-<div class="card">
+  <div class="card">
 
-<div class="title">TUN DEVELOPED</div>
+    <div class="title">TUN DEVELOPED</div>
 
-<div class="tag">
-<span>🟢 Server Online</span>
-<span>🚀 Hiệu suất cao</span>
-<span>🔐 Bảo mật</span>
-</div>
+    <div class="tag">
+      <span>🟢 Server Online</span>
+      <span>🚀 Hiệu suất cao</span>
+      <span>🔐 Bảo mật</span>
+    </div>
 
-<div class="box">
-<div class="box-title"><span>💎</span> KEY VIP</div>
-<input id="vip" placeholder="Nhập KEY VIP">
-<button class="btn" onclick="vip()">KÍCH HOẠT VIP</button>
-</div>
+    <div class="box">
+      <div class="box-title"><span>💎</span> KEY VIP</div>
+      <input id="vip" placeholder="Nhập KEY VIP">
+      <button class="btn" onclick="vip()">KÍCH HOẠT VIP</button>
+    </div>
 
-<div class="box">
-<div class="box-title"><span>🎁</span> KEY FREE</div>
-<input id="free" placeholder="Nhập KEY FREE">
-<button class="btn" onclick="freeKey()">NHẬN KEY FREE</button>
-</div>
+    <div class="box">
+      <div class="box-title"><span>🎁</span> KEY FREE</div>
+      <input id="free" placeholder="Nhập KEY FREE">
+      <button class="btn" onclick="freeKey()">NHẬN KEY FREE</button>
+    </div>
 
-<div id="result" class="result"></div>
+    <div id="result" class="result"></div>
+    <div id="history" class="history"></div>
+    <button class="btn" onclick="clearHis()">🗑 Xóa lịch sử</button>
 
-<div id="history" class="history"></div>
-<button class="btn" onclick="clearHis()">🗑 Xóa lịch sử</button>
-
-</div>
+  </div>
 </div>
 
 <div class="fab" onclick="toggle()">💬</div>
 
 <div id="menu" class="menu">
-<a href="https://zalo.me/0378099746" target="_blank">💬 Zalo</a>
-<a href="https://t.me/TunDeveloped" target="_blank">📢 Telegram</a>
-<a href="https://www.facebook.com/share/1Ea2ZvmwRa/?mibextid=wwXIfr">🌐 Facebook</a>
+  <a href="https://zalo.me/0378099746" target="_blank">💬 Zalo</a>
+  <a href="https://t.me/TunDeveloped" target="_blank">📢 Telegram</a>
+  <a href="https://www.facebook.com/share/1Ea2ZvmwRa/?mibextid=wwXIfr">🌐 Facebook</a>
 </div>
 
+<!-- POPUP -->
 <div id="popup" class="modal" style="display:none">
-<div class="modal-box">
-<h3>🎉 ƯU ĐÃI</h3>
-<p>
-🔥 Nhập KEY FREE nhận tool miễn phí<br>
-💎 VIP đang giảm giá cực mạnh
-</p>
-<button class="btn" onclick="closePopup()">OK</button>
-</div>
+  <div class="modal-box">
+    <h3>🎉 ƯU ĐÃI</h3>
+    <p>
+      🔥 Nhập KEY FREE nhận tool miễn phí<br>
+      💎 VIP đang giảm giá cực mạnh
+    </p>
+    <button class="btn" onclick="closePopup()">OK</button>
+  </div>
 </div>
 
 <script>
 const CONFIG_URL="https://raw.githubusercontent.com/AdminTunDeveloped/TunDeveloped/main/config.json";
 const KEY_URL="https://raw.githubusercontent.com/AdminTunDeveloped/TunDeveloped/main/key.json";
+
 let CONFIG={},KEY_DATA={};
 let history=JSON.parse(localStorage.getItem("his"))||[];
 
 async function load(){
-  try{
-    CONFIG=await (await fetch(CONFIG_URL+"?t="+Date.now())).json();
-    KEY_DATA=await (await fetch(KEY_URL+"?t="+Date.now())).json();
-  }catch(e){}
+try{
+CONFIG=await (await fetch(CONFIG_URL+"?t="+Date.now())).json();
+KEY_DATA=await (await fetch(KEY_URL+"?t="+Date.now())).json();
+}catch(e){}
 }
 
-window.onload=()=>{document.getElementById("popup").style.display="flex";}
-function closePopup(){document.getElementById("popup").style.display="none";}
+window.onload=()=>{
+document.getElementById("popup").style.display="flex";
+}
+
+function closePopup(){
+document.getElementById("popup").style.display="none";
+}
 
 function save(type,link){
-  history.unshift({type,link});
-  if(history.length>10)history.length=10;
-  localStorage.setItem("his",JSON.stringify(history));
-  render();
+history.unshift({type,link});
+if(history.length>10)history.length=10;
+localStorage.setItem("his",JSON.stringify(history));
+render();
 }
 
 function render(){
-  let h=document.getElementById("history");
-  if(history.length==0){h.innerHTML="📜 Chưa có lịch sử";return;}
-  h.innerHTML="<b>📜 Lịch sử:</b>"+history.map(i=>`
-    <div class="history-item">
-      <span>${i.type}</span>
-      <button class="btn" onclick="copy('${i.link}')">COPY</button>
-    </div>`).join("");
+let h=document.getElementById("history");
+if(history.length==0){h.innerHTML="📜 Chưa có lịch sử";return;}
+h.innerHTML="<b>📜 Lịch sử:</b>"+history.map(i=>`
+<div class="history-item">
+<span>${i.type}</span>
+<button class="btn" onclick="copy('${i.link}')">COPY</button>
+</div>`).join("");
 }
 
-function copy(t){navigator.clipboard.writeText(t);alert("Đã copy link");}
+function copy(t){
+navigator.clipboard.writeText(t);
+alert("Đã copy link");
+}
 
 function vip(){
-  let k=document.getElementById("vip").value.trim();
-  let obj=KEY_DATA.personal_keys?.find(x=>x.key.trim()===k);
-  if(!obj) return err("❌ Key VIP sai");
-  let link=CONFIG.scripts?.[(obj.platform||"android")+"_full"];
-  save("💎 VIP",link);ok("✔ VIP kích hoạt thành công");
+let k=document.getElementById("vip").value.trim();
+let obj=KEY_DATA.personal_keys?.find(x=>x.key.trim()===k);
+if(!obj) return err("❌ Key VIP sai");
+let link=CONFIG.scripts?.[(obj.platform||"android")+"_full"];
+save("💎 VIP",link);
+ok("✔ VIP kích hoạt thành công");
 }
 
 function freeKey(){
-  let k=document.getElementById("free").value.trim();
-  if(!KEY_DATA.community_keys?.includes(k)) return err("❌ Key FREE sai");
-  let link=CONFIG.scripts?.android_free;
-  save("🎁 FREE",link);ok("✔ Nhận FREE thành công");
+let k=document.getElementById("free").value.trim();
+if(!KEY_DATA.community_keys?.includes(k))
+return err("❌ Key FREE sai");
+let link=CONFIG.scripts?.android_free;
+save("🎁 FREE",link);
+ok("✔ Nhận FREE thành công");
 }
 
 function err(t){document.getElementById("result").innerHTML="<div class='error'>"+t+"</div>";}
 function ok(t){document.getElementById("result").innerHTML="<div class='success'>"+t+"</div>";}
 function clearHis(){history=[];localStorage.removeItem("his");render();}
 function toggle(){document.getElementById("menu").classList.toggle("show");}
-load();render();
+
+load();
+render();
 </script>
 
 </body>
