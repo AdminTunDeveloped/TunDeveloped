@@ -5,264 +5,210 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TUN DEVELOPED</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@600&family=Inter&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-    font-family:Poppins, sans-serif;
-    background:#0a0a0a;
-    color:#fff;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
+font-family:Inter;
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
 }
 
-/* MAIN CARD */
-.main{
-    width:100%;
-    max-width:420px;
-    padding:20px;
-}
+.main{width:100%;max-width:420px;padding:20px}
 
 .card{
-    background:linear-gradient(180deg,#1a0a0a,#0d0d0d);
-    border-radius:20px;
-    padding:25px;
-    text-align:center;
-    box-shadow:0 0 30px rgba(255,0,0,0.6);
-    border:1px solid rgba(255,0,0,0.2);
+background:#020617;
+border-radius:16px;
+padding:20px;
+box-shadow:0 0 30px rgba(0,255,150,0.2);
+text-align:center;
 }
 
-/* TITLE */
 .title{
-    font-family:Orbitron, sans-serif;
-    font-size:36px;
-    letter-spacing:4px;
-    color:#ff2a2a;
-    text-shadow: 0 0 10px #ff2a2a, 0 0 20px #ff4d4d, 0 0 30px #ff1a1a;
-    margin-bottom:15px;
+font-family:Bebas Neue;
+font-size:38px;
+letter-spacing:3px;
+background:linear-gradient(90deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00c8);
+background-size:400%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:rainbow 6s linear infinite;
 }
 
-/* TAG */
+@keyframes rainbow{
+0%{background-position:0}
+100%{background-position:400%}
+}
+
 .tag{
-    margin-top:5px;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:8px;
+margin-top:8px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:6px;
 }
 
 .tag span{
-    font-size:12px;
-    padding:6px 12px;
-    border-radius:999px;
-    background:#1a0a0a;
-    border:1px solid #660000;
-    color:#ff4d4d;
+font-size:11px;
+background:#020617;
+padding:5px 8px;
+border-radius:8px;
+border:1px solid #1e293b;
+color:#94a3b8;
 }
 
-/* BOX */
 .box{
-    margin-top:18px;
-    padding:20px;
-    border-radius:16px;
-    background:linear-gradient(135deg,#330000,#660000);
-    border:1px solid #ff1a1a;
-    box-shadow:0 0 15px rgba(255,0,0,0.5);
-    text-align:left;
+margin-top:15px;
+padding:14px;
+border-radius:12px;
+background:#020617;
+border:1px solid #1e293b;
+text-align:left;
 }
 
-/* BOX TITLE */
-.box-title{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-size:16px;
-    font-weight:700;
-    color:#ff4d4d;
-    margin-bottom:10px;
-    text-transform: uppercase;
-}
+.box h3{font-size:13px;color:#22c55e;margin-bottom:6px}
 
-.box-title span{
-    font-size:20px;
-}
-
-/* INPUT */
 input{
-    width:100%;
-    padding:14px;
-    border-radius:12px;
-    border:1px solid #660000;
-    background:#1a0a0a;
-    color:#fff;
-    font-size:14px;
-    margin-bottom:12px;
-    transition:0.3s;
+width:100%;
+padding:11px;
+border-radius:8px;
+border:1px solid #1e293b;
+background:#000;
+color:white;
+font-size:13px
 }
 
-input:focus{
-    outline:none;
-    border-color:#ff2a2a;
-    box-shadow:0 0 8px #ff2a2a;
+.rgb-btn{
+margin-top:10px;
+width:100%;
+padding:11px;
+border-radius:8px;
+border:none;
+background:#000;
+color:white;
+font-family:Montserrat;
+cursor:pointer;
+position:relative;
+z-index:1;
 }
 
-/* BUTTON */
-.btn{
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:999px;
-    font-weight:700;
-    font-size:15px;
-    cursor:pointer;
-    background:linear-gradient(90deg,#ff2a2a,#ff4d4d,#ff1a1a);
-    color:#fff;
-    text-shadow: 0 0 5px #fff;
-    transition:0.3s;
-    box-shadow:0 0 10px rgba(255,0,0,0.5);
+.rgb-btn:before{
+content:"";
+position:absolute;
+top:-2px;left:-2px;right:-2px;bottom:-2px;
+border-radius:10px;
+background:linear-gradient(45deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00c8);
+background-size:400%;
+z-index:-1;
+animation:rgb 6s linear infinite
 }
 
-.btn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 0 20px rgba(255,0,0,0.8), 0 0 40px rgba(255,77,77,0.6);
+@keyframes rgb{
+0%{background-position:0}
+100%{background-position:400%}
 }
 
-.btn:active{
-    transform:scale(0.96);
-}
+.result{margin-top:12px;font-size:13px}
+.success{color:#22c55e}
+.error{color:#ef4444}
 
-/* RESULT */
-.result{
-    margin-top:12px;
-    font-size:14px;
-    font-weight:600;
-}
-
-.success{color:#22c55e;text-shadow:0 0 5px #22c55e;}
-.error{color:#ff4d4d;text-shadow:0 0 5px #ff4d4d;}
-
-/* HISTORY */
 .history{
-    margin-top:12px;
-    padding:10px;
-    border-radius:12px;
-    background:#1a0a0a;
-    border:1px solid #660000;
-    font-size:12px;
-    text-align:left;
-    max-height:160px;
-    overflow:auto;
+margin-top:12px;
+padding:10px;
+border-radius:10px;
+background:#020617;
+border:1px solid #1e293b;
+font-size:12px;
+text-align:left;
 }
 
 .history-item{
-    margin-top:6px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+margin-top:6px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:6px;
 }
 
-/* FAB */
+.clear{
+margin-top:10px;
+}
+
 .fab{
-    position:fixed;
-    bottom:90px;
-    right:18px;
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    background:linear-gradient(45deg,#ff2a2a,#ff4d4d);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    z-index:999;
-    color:#fff;
-    font-size:22px;
-    box-shadow:0 0 15px rgba(255,0,0,0.7);
-    transition:0.3s;
+position:fixed;
+bottom:90px;
+right:18px;
+width:48px;
+height:48px;
+border-radius:50%;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+z-index:999;
 }
 
-.fab:hover{
-    transform:scale(1.1);
-    box-shadow:0 0 25px rgba(255,0,0,1);
+.fab:before{
+content:"";
+position:absolute;
+top:-2px;left:-2px;right:-2px;bottom:-2px;
+border-radius:50%;
+background:linear-gradient(45deg,#ff0000,#00ffd5,#7a00ff);
+background-size:400%;
+animation:rgb 6s linear infinite;
+z-index:-1;
 }
 
-/* MENU */
 .menu{
-    position:fixed;
-    bottom:160px;
-    right:18px;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    opacity:0;
-    pointer-events:none;
-    transform:translateY(10px);
-    transition:0.25s;
-    z-index:999;
+position:fixed;
+bottom:150px;
+right:18px;
+display:flex;
+flex-direction:column;
+gap:10px;
+opacity:0;
+pointer-events:none;
+transform:translateY(10px);
+transition:0.25s;
+z-index:999;
 }
 
 .menu a{
-    width:160px;
-    padding:12px;
-    border-radius:14px;
-    background:#330000;
-    color:#fff;
-    text-align:center;
-    text-decoration:none;
-    border:1px solid #ff1a1a;
-    box-shadow:0 0 10px rgba(255,0,0,0.5);
-    transition:0.3s;
+width:150px;
+padding:10px;
+border-radius:10px;
+background:#000;
+color:white;
+text-align:center;
+font-size:13px;
+text-decoration:none;
+font-family:Montserrat;
+position:relative;
 }
 
-.menu a:hover{
-    box-shadow:0 0 20px rgba(255,0,0,0.8);
+.menu a:before{
+content:"";
+position:absolute;
+top:-2px;left:-2px;right:-2px;bottom:-2px;
+border-radius:12px;
+background:linear-gradient(45deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00c8);
+background-size:400%;
+animation:rgb 6s linear infinite;
+z-index:-1;
 }
 
 .menu.show{
-    opacity:1;
-    pointer-events:auto;
-    transform:translateY(0);
+opacity:1;
+pointer-events:auto;
+transform:translateY(0);
 }
-
-/* MODAL ƯU ĐÃI */
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.85);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    z-index:2000;
-}
-
-.modal-box{
-    background:linear-gradient(135deg,#330000,#660000);
-    padding:20px;
-    border-radius:16px;
-    text-align:center;
-    border:1px solid #ff2a2a;
-    box-shadow:0 0 20px rgba(255,0,0,0.7);
-    width:90%;
-    max-width:320px;
-}
-
-.modal-box h3{
-    color:#ff2a2a;
-    text-shadow:0 0 10px #ff2a2a;
-    margin-bottom:10px;
-}
-
-.modal-box p{
-    font-size:14px;
-    margin-bottom:15px;
-    line-height:1.4;
-    color:#fff;
-}
-
 </style>
 </head>
 
@@ -276,25 +222,25 @@ input:focus{
 <div class="tag">
 <span>🟢 Server Online</span>
 <span>🚀 Hiệu suất cao</span>
-<span>🔐 Bảo mật</span>
+<span>🔐Bảo mật</span>
 </div>
 
 <div class="box">
-<div class="box-title"><span>💎</span> KEY VIP</div>
+<h3>💎 KEY VIP</h3>
 <input id="vip" placeholder="Nhập KEY VIP">
-<button class="btn" onclick="vip()">KÍCH HOẠT VIP</button>
+<button class="rgb-btn" onclick="vip()">Kích hoạt</button>
 </div>
 
 <div class="box">
-<div class="box-title"><span>🎁</span> KEY FREE</div>
+<h3>🎁 KEY FREE</h3>
 <input id="free" placeholder="Nhập KEY FREE">
-<button class="btn" onclick="freeKey()">NHẬN KEY FREE</button>
+<button class="rgb-btn" onclick="freeKey()">Nhận Free</button>
 </div>
 
 <div id="result" class="result"></div>
 
 <div id="history" class="history"></div>
-<button class="btn" onclick="clearHis()">🗑 Xóa lịch sử</button>
+<button class="rgb-btn clear" onclick="clearHis()">🗑 Xóa lịch sử</button>
 
 </div>
 </div>
@@ -307,19 +253,8 @@ input:focus{
 <a href="https://www.facebook.com/share/1Ea2ZvmwRa/?mibextid=wwXIfr">🌐 Facebook</a>
 </div>
 
-<!-- POPUP -->
-<div id="popup" class="modal" style="display:none">
-<div class="modal-box">
-<h3>🎉 ƯU ĐÃI</h3>
-<p>
-🔥 Nhập KEY FREE nhận tool miễn phí<br>
-💎 VIP đang giảm giá cực mạnh
-</p>
-<button class="btn" onclick="closePopup()">OK</button>
-</div>
-</div>
-
 <script>
+
 const CONFIG_URL="https://raw.githubusercontent.com/AdminTunDeveloped/TunDeveloped/main/config.json";
 const KEY_URL="https://raw.githubusercontent.com/AdminTunDeveloped/TunDeveloped/main/key.json";
 
@@ -327,85 +262,87 @@ let CONFIG={},KEY_DATA={};
 let history=JSON.parse(localStorage.getItem("his"))||[];
 
 async function load(){
-    try{
-        CONFIG=await (await fetch(CONFIG_URL+"?t="+Date.now())).json();
-        KEY_DATA=await (await fetch(KEY_URL+"?t="+Date.now())).json();
-    }catch(e){}
+try{
+CONFIG=await (await fetch(CONFIG_URL+"?t="+Date.now())).json();
+KEY_DATA=await (await fetch(KEY_URL+"?t="+Date.now())).json();
+}catch(e){
+console.log("Lỗi load JSON");
 }
-
-/* POPUP */
-window.onload=()=>{
-    document.getElementById("popup").style.display="flex";
-}
-
-function closePopup(){
-    document.getElementById("popup").style.display="none";
 }
 
 function save(type,link){
-    history.unshift({type,link});
-    if(history.length>10)history.length=10;
-    localStorage.setItem("his",JSON.stringify(history));
-    render();
+history.unshift({type,link});
+if(history.length>10)history.length=10;
+localStorage.setItem("his",JSON.stringify(history));
+render();
 }
 
 function render(){
-    let h=document.getElementById("history");
-    if(history.length==0){
-        h.innerHTML="📜 Chưa có lịch sử";
-        return;
-    }
-    h.innerHTML="<b>📜 Lịch sử:</b>"+history.map(i=>`
-        <div class="history-item">
-            <span>${i.type}</span>
-            <button class="btn" onclick="copy('${i.link}')">COPY</button>
-        </div>
-    `).join("");
+let h=document.getElementById("history");
+
+if(history.length==0){
+h.innerHTML="📜 Chưa có lịch sử";
+return;
+}
+
+h.innerHTML="<b>📜 Lịch sử:</b>"+history.map(i=>`
+<div class="history-item">
+<span>${i.type}</span>
+<button class="rgb-btn" onclick="copy('${i.link}')">COPY</button>
+</div>
+`).join("");
 }
 
 function copy(t){
-    navigator.clipboard.writeText(t);
-    alert("Đã copy link");
+navigator.clipboard.writeText(t);
+alert("Đã copy link");
 }
 
 function vip(){
-    let k=document.getElementById("vip").value.trim();
-    let obj=KEY_DATA.personal_keys?.find(x=>x.key.trim()===k);
-    if(!obj) return err("❌ Key VIP sai");
-    let link=CONFIG.scripts?.[(obj.platform||"android")+"_full"];
-    save("💎 VIP",link);
-    ok("✔ VIP kích hoạt thành công");
+let k=document.getElementById("vip").value.trim();
+let obj=KEY_DATA.personal_keys?.find(x=>x.key.trim()===k);
+
+if(!obj) return err("❌ Key VIP sai");
+
+let link=CONFIG.scripts?.[(obj.platform||"android")+"_full"];
+
+save("💎 VIP",link);
+ok("✔ VIP kích hoạt thành công");
 }
 
 function freeKey(){
-    let k=document.getElementById("free").value.trim();
-    if(!KEY_DATA.community_keys?.includes(k))
-        return err("❌ Key FREE sai");
-    let link=CONFIG.scripts?.android_free;
-    save("🎁 FREE",link);
-    ok("✔ Nhận FREE thành công");
+let k=document.getElementById("free").value.trim();
+
+if(!KEY_DATA.community_keys?.includes(k))
+return err("❌ Key FREE sai");
+
+let link=CONFIG.scripts?.android_free;
+
+save("🎁 FREE",link);
+ok("✔ Nhận FREE thành công");
 }
 
 function err(t){
-    document.getElementById("result").innerHTML="<div class='error'>"+t+"</div>";
+document.getElementById("result").innerHTML="<div class='error'>"+t+"</div>";
 }
 
 function ok(t){
-    document.getElementById("result").innerHTML="<div class='success'>"+t+"</div>";
+document.getElementById("result").innerHTML="<div class='success'>"+t+"</div>";
 }
 
 function clearHis(){
-    history=[];
-    localStorage.removeItem("his");
-    render();
+history=[];
+localStorage.removeItem("his");
+render();
 }
 
 function toggle(){
-    document.getElementById("menu").classList.toggle("show");
+document.getElementById("menu").classList.toggle("show");
 }
 
 load();
 render();
+
 </script>
 
 </body>
