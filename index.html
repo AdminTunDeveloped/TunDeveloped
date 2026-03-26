@@ -19,67 +19,68 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
 }
 
-/* Background cyberpunk subtle */
+/* Background cyberpunk */
 body::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    inset: 0;
     background: 
-        linear-gradient(rgba(0,255,200,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,255,200,0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-    pointer-events: none;
+        linear-gradient(rgba(103,232,249,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(103,232,249,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
     z-index: -2;
 }
 
 body::after {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(circle at 30% 20%, rgba(120,0,255,0.08), transparent 50%),
-                radial-gradient(circle at 70% 80%, rgba(0,255,200,0.08), transparent 50%);
+    inset: 0;
+    background: radial-gradient(circle at 25% 30%, rgba(167,139,250,0.12), transparent 60%),
+                radial-gradient(circle at 75% 70%, rgba(103,232,249,0.12), transparent 60%);
     z-index: -1;
 }
 
-.main { width: 100%; max-width: 460px; padding: 20px; z-index: 2; }
+.main { width: 100%; max-width: 480px; padding: 20px; z-index: 2; }
 
 .card {
-    background: rgba(15, 23, 42, 0.65);
-    backdrop-filter: blur(20px);
-    border-radius: 28px;
-    border: 1px solid rgba(103, 232, 249, 0.15);
-    padding: 36px 30px;
-    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6),
-                inset 0 0 40px rgba(103, 232, 249, 0.08);
+    background: rgba(15, 23, 42, 0.72);
+    backdrop-filter: blur(24px);
+    border-radius: 32px;
+    border: 1px solid rgba(103,232,249,0.25);
+    padding: 40px 32px;
+    box-shadow: 
+        0 35px 70px -20px rgba(0,0,0,0.7),
+        inset 0 0 60px rgba(103,232,249,0.1);
     text-align: center;
     position: relative;
 }
 
-/* Title + Icon */
+/* Title */
 .header {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    margin-bottom: 8px;
+    gap: 14px;
+    margin-bottom: 10px;
 }
 
 .title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 46px;
-    letter-spacing: 5px;
+    font-size: 48px;
+    letter-spacing: 6px;
     background: linear-gradient(90deg, #67e8f9, #c084fc, #f472b6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 40px rgba(103, 232, 249, 0.6);
+    text-shadow: 0 0 50px rgba(103,232,249,0.7);
 }
 
+/* Tag */
 .tag {
-    margin: 16px 0 24px;
+    margin: 18px 0 28px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -87,131 +88,148 @@ body::after {
 }
 
 .tag span {
-    font-size: 12.5px;
-    padding: 7px 14px;
+    font-size: 13px;
+    padding: 8px 16px;
     border-radius: 9999px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(103,232,249,0.2);
-    color: #a5b4fc;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(103,232,249,0.3);
+    color: #c4d0ff;
 }
 
 /* Box */
 .box {
-    margin-top: 22px;
-    padding: 22px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(103,232,249,0.1);
+    margin-top: 24px;
+    padding: 24px;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(103,232,249,0.2);
     text-align: left;
 }
 
 .box h3 {
-    font-size: 15.5px;
+    font-size: 16px;
     color: #67e8f9;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
-/* Input & Button */
+/* Input */
 input {
     width: 100%;
-    padding: 15px 18px;
-    border-radius: 14px;
-    border: 1px solid rgba(103,232,249,0.2);
-    background: rgba(0,0,0,0.5);
+    padding: 16px 18px;
+    border-radius: 16px;
+    border: 1px solid rgba(103,232,249,0.25);
+    background: rgba(0,0,0,0.55);
     color: #fff;
-    font-size: 15.5px;
+    font-size: 16px;
 }
 
 input:focus {
     border-color: #67e8f9;
-    box-shadow: 0 0 0 4px rgba(103,232,249,0.15);
+    box-shadow: 0 0 0 5px rgba(103,232,249,0.2);
     outline: none;
 }
 
+/* Button */
 .rgb-btn {
-    margin-top: 12px;
+    margin-top: 14px;
     width: 100%;
-    padding: 15px;
+    padding: 16px;
     border: none;
-    border-radius: 14px;
-    background: linear-gradient(90deg, #67e8f9, #a78bfa);
+    border-radius: 16px;
+    background: linear-gradient(90deg, #67e8f9, #a78bfa, #f472b6);
     color: #0f172a;
     font-weight: 700;
-    font-size: 15.5px;
+    font-size: 16px;
     cursor: pointer;
     transition: all 0.4s ease;
-    box-shadow: 0 8px 25px rgba(103,232,249,0.3);
+    box-shadow: 0 10px 30px rgba(103,232,249,0.35);
 }
 
 .rgb-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(103,232,249,0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(103,232,249,0.5);
 }
 
-.rgb-btn:active { transform: scale(0.97); }
+.rgb-btn:active { transform: scale(0.96); }
 
-/* Result & History */
-.result { margin: 18px 0; font-size: 15px; font-weight: 500; min-height: 28px; }
+/* Result */
+.result { margin: 20px 0; min-height: 30px; font-size: 15.5px; font-weight: 500; }
 
-.success { color: #67e8f9; }
-.error { color: #f87171; }
-
+/* History - ĐÃ SỬA SCROLL */
 .history {
-    margin-top: 26px;
-    padding: 18px;
-    border-radius: 18px;
-    background: rgba(255,255,255,0.035);
-    border: 1px solid rgba(103,232,249,0.1);
-    max-height: 240px;
+    margin-top: 28px;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(103,232,249,0.18);
+    max-height: 260px;
     overflow-y: auto;
-    font-size: 14px;
+    scroll-behavior: smooth;
+    font-size: 14.5px;
+}
+
+/* Thanh scroll neon */
+.history::-webkit-scrollbar {
+    width: 6px;
+}
+.history::-webkit-scrollbar-thumb {
+    background: linear-gradient(#67e8f9, #c084fc);
+    border-radius: 10px;
+}
+.history::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
 }
 
 .history-item {
-    padding: 11px 0;
+    padding: 12px 0;
     border-bottom: 1px solid rgba(255,255,255,0.08);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.history-item:last-child { border: none; }
+.history-item:last-child { border-bottom: none; }
 
 /* FAB & Menu */
 .fab {
     position: fixed;
-    bottom: 95px;
-    right: 22px;
-    width: 58px;
-    height: 58px;
-    background: rgba(15,23,42,0.9);
+    bottom: 100px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    background: rgba(15,23,42,0.95);
     border: 2px solid #67e8f9;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 26px;
+    font-size: 28px;
     cursor: pointer;
-    box-shadow: 0 10px 30px rgba(103,232,249,0.25);
+    box-shadow: 0 12px 35px rgba(103,232,249,0.3);
     z-index: 100;
     transition: 0.3s;
 }
 
-.fab:hover { background: #67e8f9; color: #0f172a; transform: rotate(20deg); }
+.fab:hover {
+    background: #67e8f9;
+    color: #0f172a;
+    transform: scale(1.12);
+}
 
 .menu {
     position: fixed;
-    bottom: 170px;
-    right: 22px;
+    bottom: 175px;
+    right: 24px;
+    display: flex;
     flex-direction: column;
     gap: 12px;
     opacity: 0;
     pointer-events: none;
     transform: translateY(20px);
-    transition: 0.35s ease;
+    transition: 0.4s ease;
     z-index: 99;
 }
 
@@ -222,22 +240,22 @@ input:focus {
 }
 
 .menu a {
-    padding: 14px 20px;
-    width: 180px;
+    width: 190px;
+    padding: 15px 20px;
     background: rgba(15,23,42,0.95);
-    border: 1px solid rgba(103,232,249,0.2);
-    border-radius: 16px;
+    border: 1px solid rgba(103,232,249,0.25);
+    border-radius: 18px;
     color: #fff;
     text-decoration: none;
-    font-size: 14.5px;
+    font-size: 15px;
     text-align: center;
     transition: 0.3s;
 }
 
 .menu a:hover {
-    background: rgba(103,232,249,0.15);
+    background: rgba(103,232,249,0.2);
     border-color: #67e8f9;
-    transform: translateX(-6px);
+    transform: translateX(-8px);
 }
 </style>
 </head>
@@ -247,7 +265,7 @@ input:focus {
 <div class="main">
     <div class="card">
         <div class="header">
-            <i class="fas fa-bolt" style="font-size:32px;color:#67e8f9;"></i>
+            <i class="fas fa-bolt" style="font-size:36px;color:#67e8f9;"></i>
             <div class="title">TUN DEVELOPED</div>
         </div>
         
@@ -272,7 +290,10 @@ input:focus {
         <div id="result" class="result"></div>
 
         <div id="history" class="history"></div>
-        <button class="rgb-btn" style="background:#334155;color:#e2e8f0;margin-top:12px;" onclick="clearHis()">🗑 Xóa lịch sử</button>
+        
+        <button class="rgb-btn" style="background:#1e2937; color:#e2e8f0; margin-top:16px;" onclick="clearHis()">
+            🗑 Xóa lịch sử
+        </button>
     </div>
 </div>
 
@@ -285,7 +306,6 @@ input:focus {
 </div>
 
 <script>
-// Giữ nguyên toàn bộ script cũ của mày (load, vip, freeKey, save, render, copy, err, ok, clearHis, toggle)
 const CONFIG_URL = "https://raw.githubusercontent.com/AdminTunDeveloped/TunDeveloped/main/config.json";
 const KEY_URL = "https://raw.githubusercontent.com/AdminTunDeveloped/TunDeveloped/main/key.json";
 
@@ -301,30 +321,31 @@ async function load() {
 
 function save(type, link) {
     history.unshift({type, link});
-    if (history.length > 10) history.length = 10;
+    if (history.length > 12) history.length = 12;
     localStorage.setItem("his", JSON.stringify(history));
     render();
 }
 
 function render() {
-    let h = document.getElementById("history");
+    const h = document.getElementById("history");
     if (history.length === 0) {
-        h.innerHTML = "<span style='color:#64748b; font-style:italic;'>Chưa có lịch sử nào</span>";
+        h.innerHTML = `<span style="color:#64748b; font-style:italic;">Chưa có lịch sử</span>`;
         return;
     }
     h.innerHTML = history.map(i => `
         <div class="history-item">
             <span>${i.type}</span>
-            <button class="rgb-btn" style="padding:7px 16px; font-size:13px; width:auto;" onclick="copy('${i.link}')">COPY</button>
+            <button class="rgb-btn" style="padding:8px 18px; font-size:13px; width:auto; margin:0;" onclick="copy('${i.link}')">COPY</button>
         </div>
     `).join("");
 }
 
 function copy(t) {
-    navigator.clipboard.writeText(t).then(() => alert("✅ Đã copy link!"));
+    navigator.clipboard.writeText(t);
+    alert("✅ Đã copy link!");
 }
 
-function vip() { /* giữ nguyên code cũ */ 
+function vip() {
     let k = document.getElementById("vip").value.trim();
     let obj = KEY_DATA.personal_keys?.find(x => x.key.trim() === k);
     if (!obj) return err("❌ Key VIP không đúng");
@@ -333,7 +354,7 @@ function vip() { /* giữ nguyên code cũ */
     ok("✅ VIP kích hoạt thành công!");
 }
 
-function freeKey() { /* giữ nguyên */
+function freeKey() {
     let k = document.getElementById("free").value.trim();
     if (!KEY_DATA.community_keys?.includes(k)) return err("❌ Key FREE không đúng");
     let link = CONFIG.scripts?.android_free;
@@ -341,11 +362,11 @@ function freeKey() { /* giữ nguyên */
     ok("✅ Nhận FREE thành công!");
 }
 
-function err(t) { document.getElementById("result").innerHTML = `<span class='error'>${t}</span>`; }
-function ok(t) { document.getElementById("result").innerHTML = `<span class='success'>${t}</span>`; }
+function err(t) { document.getElementById("result").innerHTML = `<span style="color:#f87171;">${t}</span>`; }
+function ok(t) { document.getElementById("result").innerHTML = `<span style="color:#67e8f9;">${t}</span>`; }
 
 function clearHis() {
-    if(confirm("Xóa hết lịch sử?")) {
+    if (confirm("Xóa toàn bộ lịch sử?")) {
         history = [];
         localStorage.removeItem("his");
         render();
