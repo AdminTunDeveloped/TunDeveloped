@@ -23,40 +23,50 @@ body {
     overflow: hidden;
 }
 
-/* Background cyberpunk */
+/* Background premium cyberpunk (mượt, không lag) */
 body::before {
     content: '';
     position: absolute;
     inset: 0;
     background: 
-        linear-gradient(rgba(103,232,249,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(103,232,249,0.025) 1px, transparent 1px);
-    background-size: 60px 60px;
+        linear-gradient(rgba(103,232,249,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(103,232,249,0.018) 1px, transparent 1px);
+    background-size: 70px 70px;
     z-index: -2;
+    animation: gridMove 25s linear infinite;
+}
+
+@keyframes gridMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 70px 70px; }
 }
 
 body::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 25% 30%, rgba(167,139,250,0.12), transparent 60%),
-                radial-gradient(circle at 75% 70%, rgba(103,232,249,0.12), transparent 60%);
+    background: radial-gradient(circle at 20% 30%, rgba(167,139,250,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 75%, rgba(103,232,249,0.15) 0%, transparent 50%);
     z-index: -1;
 }
 
-.main { width: 100%; max-width: 480px; padding: 20px; z-index: 2; }
+/* Card chính - cân đối, cao hơn, chuyên nghiệp */
+.main { width: 100%; max-width: 460px; padding: 20px; }
 
 .card {
-    background: rgba(15, 23, 42, 0.72);
-    backdrop-filter: blur(24px);
+    background: rgba(15, 23, 42, 0.78);
+    backdrop-filter: blur(28px);
     border-radius: 32px;
-    border: 1px solid rgba(103,232,249,0.25);
-    padding: 40px 32px;
+    border: 1px solid rgba(103,232,249,0.3);
+    padding: 38px 32px 32px;
     box-shadow: 
-        0 35px 70px -20px rgba(0,0,0,0.7),
-        inset 0 0 60px rgba(103,232,249,0.1);
+        0 40px 80px -20px rgba(0,0,0,0.75),
+        inset 0 0 80px rgba(103,232,249,0.12);
     text-align: center;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 620px; /* Đảm bảo cân đối */
 }
 
 /* Title */
@@ -64,8 +74,8 @@ body::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 14px;
-    margin-bottom: 10px;
+    gap: 16px;
+    margin-bottom: 12px;
 }
 
 .title {
@@ -75,12 +85,12 @@ body::after {
     background: linear-gradient(90deg, #67e8f9, #c084fc, #f472b6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 50px rgba(103,232,249,0.7);
+    text-shadow: 0 0 50px rgba(103,232,249,0.8);
 }
 
 /* Tag */
 .tag {
-    margin: 18px 0 28px;
+    margin: 16px 0 30px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -89,25 +99,32 @@ body::after {
 
 .tag span {
     font-size: 13px;
-    padding: 8px 16px;
+    padding: 8px 18px;
     border-radius: 9999px;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(103,232,249,0.3);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(103,232,249,0.35);
     color: #c4d0ff;
+    box-shadow: 0 0 15px rgba(103,232,249,0.2);
 }
 
 /* Box */
 .box {
-    margin-top: 24px;
+    margin-top: 22px;
     padding: 24px;
-    border-radius: 22px;
-    background: rgba(255,255,255,0.045);
-    border: 1px solid rgba(103,232,249,0.2);
+    border-radius: 24px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(103,232,249,0.25);
     text-align: left;
+    transition: all 0.3s ease;
+}
+
+.box:hover {
+    border-color: #67e8f9;
+    box-shadow: 0 0 25px rgba(103,232,249,0.15);
 }
 
 .box h3 {
-    font-size: 16px;
+    font-size: 16.5px;
     color: #67e8f9;
     margin-bottom: 14px;
     display: flex;
@@ -118,17 +135,18 @@ body::after {
 /* Input */
 input {
     width: 100%;
-    padding: 16px 18px;
+    padding: 17px 20px;
     border-radius: 16px;
-    border: 1px solid rgba(103,232,249,0.25);
-    background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(103,232,249,0.3);
+    background: rgba(0,0,0,0.6);
     color: #fff;
     font-size: 16px;
+    transition: all 0.3s ease;
 }
 
 input:focus {
     border-color: #67e8f9;
-    box-shadow: 0 0 0 5px rgba(103,232,249,0.2);
+    box-shadow: 0 0 0 5px rgba(103,232,249,0.25);
     outline: none;
 }
 
@@ -136,87 +154,133 @@ input:focus {
 .rgb-btn {
     margin-top: 14px;
     width: 100%;
-    padding: 16px;
+    padding: 17px;
     border: none;
     border-radius: 16px;
     background: linear-gradient(90deg, #67e8f9, #a78bfa, #f472b6);
     color: #0f172a;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 16.5px;
     cursor: pointer;
-    transition: all 0.4s ease;
-    box-shadow: 0 10px 30px rgba(103,232,249,0.35);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 12px 35px rgba(103,232,249,0.4);
+    position: relative;
+    overflow: hidden;
 }
 
 .rgb-btn:hover {
     transform: translateY(-4px);
-    box-shadow: 0 18px 40px rgba(103,232,249,0.5);
+    box-shadow: 0 20px 45px rgba(103,232,249,0.55);
 }
 
-.rgb-btn:active { transform: scale(0.96); }
+.rgb-btn:active {
+    transform: scale(0.97);
+}
 
-/* Result */
-.result { margin: 20px 0; min-height: 30px; font-size: 15.5px; font-weight: 500; }
+/* Hiệu ứng ripple */
+.rgb-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
+    background: rgba(255,255,255,0.4);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: ripple 0.6s ease-out;
+    opacity: 0;
+}
 
-/* History - ĐÃ SỬA SCROLL */
+@keyframes ripple {
+    to { width: 300px; height: 300px; opacity: 0; }
+}
+
+/* Result - có animation đẹp */
+.result {
+    margin: 22px 0;
+    min-height: 34px;
+    font-size: 15.5px;
+    font-weight: 600;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.success { color: #67e8f9; text-shadow: 0 0 12px #67e8f9; }
+.error   { color: #f87171; text-shadow: 0 0 12px #f87171; }
+
+/* HISTORY - ĐÃ FIX SCROLL HOÀN TOÀN */
 .history {
-    margin-top: 28px;
+    margin-top: 26px;
+    flex: 1;                    /* Quan trọng: chiếm hết không gian còn lại */
     padding: 20px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(103,232,249,0.18);
-    max-height: 260px;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(103,232,249,0.25);
     overflow-y: auto;
     scroll-behavior: smooth;
     font-size: 14.5px;
+    max-height: 280px;          /* Giới hạn chiều cao, lướt mượt */
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
 }
 
-/* Thanh scroll neon */
-.history::-webkit-scrollbar {
-    width: 6px;
-}
+/* Thanh cuộn neon đẹp */
+.history::-webkit-scrollbar { width: 7px; }
 .history::-webkit-scrollbar-thumb {
     background: linear-gradient(#67e8f9, #c084fc);
     border-radius: 10px;
 }
 .history::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.06);
 }
 
+/* History item */
 .history-item {
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 13px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.2s;
 }
 
+.history-item:hover { background: rgba(103,232,249,0.08); border-radius: 8px; }
 .history-item:last-child { border-bottom: none; }
 
-/* FAB & Menu */
+/* Clear button */
+.clear-btn {
+    margin-top: 16px;
+    background: #1e2937;
+    color: #e2e8f0;
+    font-weight: 600;
+}
+
+/* FAB + Menu */
 .fab {
     position: fixed;
-    bottom: 100px;
+    bottom: 95px;
     right: 24px;
-    width: 60px;
-    height: 60px;
+    width: 62px;
+    height: 62px;
     background: rgba(15,23,42,0.95);
-    border: 2px solid #67e8f9;
+    border: 3px solid #67e8f9;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 28px;
     cursor: pointer;
-    box-shadow: 0 12px 35px rgba(103,232,249,0.3);
+    box-shadow: 0 15px 40px rgba(103,232,249,0.35);
     z-index: 100;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 .fab:hover {
     background: #67e8f9;
     color: #0f172a;
-    transform: scale(1.12);
+    transform: scale(1.15) rotate(15deg);
 }
 
 .menu {
@@ -229,7 +293,7 @@ input:focus {
     opacity: 0;
     pointer-events: none;
     transform: translateY(20px);
-    transition: 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 99;
 }
 
@@ -240,22 +304,22 @@ input:focus {
 }
 
 .menu a {
-    width: 190px;
-    padding: 15px 20px;
+    width: 195px;
+    padding: 16px 22px;
     background: rgba(15,23,42,0.95);
-    border: 1px solid rgba(103,232,249,0.25);
+    border: 1px solid rgba(103,232,249,0.3);
     border-radius: 18px;
     color: #fff;
     text-decoration: none;
     font-size: 15px;
     text-align: center;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 .menu a:hover {
     background: rgba(103,232,249,0.2);
-    border-color: #67e8f9;
-    transform: translateX(-8px);
+    transform: translateX(-10px);
+    box-shadow: 0 0 20px rgba(103,232,249,0.4);
 }
 </style>
 </head>
@@ -265,7 +329,7 @@ input:focus {
 <div class="main">
     <div class="card">
         <div class="header">
-            <i class="fas fa-bolt" style="font-size:36px;color:#67e8f9;"></i>
+            <i class="fas fa-bolt" style="font-size:38px;color:#67e8f9;"></i>
             <div class="title">TUN DEVELOPED</div>
         </div>
         
@@ -289,11 +353,10 @@ input:focus {
 
         <div id="result" class="result"></div>
 
+        <!-- HISTORY -->
         <div id="history" class="history"></div>
-        
-        <button class="rgb-btn" style="background:#1e2937; color:#e2e8f0; margin-top:16px;" onclick="clearHis()">
-            🗑 Xóa lịch sử
-        </button>
+
+        <button class="rgb-btn clear-btn" onclick="clearHis()">🗑 Xóa lịch sử</button>
     </div>
 </div>
 
@@ -329,20 +392,21 @@ function save(type, link) {
 function render() {
     const h = document.getElementById("history");
     if (history.length === 0) {
-        h.innerHTML = `<span style="color:#64748b; font-style:italic;">Chưa có lịch sử</span>`;
+        h.innerHTML = `<span style="color:#64748b;font-style:italic;display:block;text-align:center;padding:20px 0;">Chưa có lịch sử</span>`;
         return;
     }
     h.innerHTML = history.map(i => `
         <div class="history-item">
             <span>${i.type}</span>
-            <button class="rgb-btn" style="padding:8px 18px; font-size:13px; width:auto; margin:0;" onclick="copy('${i.link}')">COPY</button>
+            <button class="rgb-btn" style="padding:8px 20px;font-size:13px;width:auto;margin:0;" onclick="copy('${i.link}')">COPY</button>
         </div>
     `).join("");
 }
 
 function copy(t) {
-    navigator.clipboard.writeText(t);
-    alert("✅ Đã copy link!");
+    navigator.clipboard.writeText(t).then(() => {
+        alert("✅ Đã copy link!");
+    });
 }
 
 function vip() {
@@ -362,8 +426,17 @@ function freeKey() {
     ok("✅ Nhận FREE thành công!");
 }
 
-function err(t) { document.getElementById("result").innerHTML = `<span style="color:#f87171;">${t}</span>`; }
-function ok(t) { document.getElementById("result").innerHTML = `<span style="color:#67e8f9;">${t}</span>`; }
+function err(t) {
+    const res = document.getElementById("result");
+    res.innerHTML = `<span class='error'>${t}</span>`;
+    setTimeout(() => { res.innerHTML = ''; }, 4500);
+}
+
+function ok(t) {
+    const res = document.getElementById("result");
+    res.innerHTML = `<span class='success'>${t}</span>`;
+    setTimeout(() => { res.innerHTML = ''; }, 4500);
+}
 
 function clearHis() {
     if (confirm("Xóa toàn bộ lịch sử?")) {
