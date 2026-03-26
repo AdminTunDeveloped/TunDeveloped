@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+l<!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
@@ -20,132 +20,108 @@ align-items:center;
 min-height:100vh;
 }
 
-/* CARD */
 .main{width:100%;max-width:420px;padding:20px}
 
 .card{
-background:rgba(2,6,23,0.85);
-backdrop-filter:blur(20px);
-border-radius:18px;
+background:linear-gradient(180deg,#020617,#020617dd);
+border-radius:20px;
 padding:20px;
-box-shadow:0 0 40px rgba(0,255,150,0.15);
+box-shadow:0 0 60px rgba(0,255,213,0.15);
 text-align:center;
 border:1px solid rgba(255,255,255,0.05);
 }
 
-/* TITLE RGB */
+/* TITLE */
 .title{
 font-family:Bebas Neue;
-font-size:40px;
+font-size:42px;
 letter-spacing:4px;
-background:linear-gradient(90deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00c8);
-background-size:400%;
+background:linear-gradient(90deg,#67e8f9,#a78bfa,#f472b6);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-animation:rainbow 8s linear infinite;
-}
-
-@keyframes rainbow{
-0%{background-position:0}
-100%{background-position:400%}
 }
 
 /* TAG */
 .tag{
-margin-top:8px;
+margin-top:10px;
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:6px;
+gap:8px;
 }
 
 .tag span{
-font-size:11px;
+font-size:12px;
+padding:6px 12px;
+border-radius:999px;
 background:#020617;
-padding:5px 8px;
-border-radius:8px;
 border:1px solid #1e293b;
 color:#94a3b8;
 }
 
 /* BOX */
 .box{
-margin-top:15px;
-padding:14px;
-border-radius:12px;
+margin-top:18px;
+padding:18px;
+border-radius:18px;
 background:#020617;
 border:1px solid #1e293b;
-text-align:left;
-transition:0.3s;
 }
 
-.box:hover{
-border-color:#22c55e;
-box-shadow:0 0 15px rgba(34,197,94,0.2);
+/* TITLE BOX */
+.box-title{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:15px;
+font-weight:600;
+color:#67e8f9;
+margin-bottom:10px;
 }
 
-.box h3{font-size:13px;color:#22c55e;margin-bottom:6px}
+.box-title span{
+font-size:18px;
+}
 
 /* INPUT */
 input{
 width:100%;
-padding:11px;
-border-radius:8px;
+padding:14px;
+border-radius:14px;
 border:1px solid #1e293b;
 background:#000;
 color:white;
-font-size:13px;
-transition:0.25s;
+font-size:14px;
+margin-bottom:12px;
 }
 
 input:focus{
 outline:none;
-border-color:#00ffd5;
-box-shadow:0 0 10px rgba(0,255,213,0.4);
+border-color:#67e8f9;
+box-shadow:0 0 10px rgba(103,232,249,0.4);
 }
 
-/* BUTTON RGB XỊN */
-.rgb-btn{
-margin-top:10px;
+/* BUTTON GRADIENT */
+.btn{
 width:100%;
-padding:11px;
-border-radius:8px;
+padding:14px;
 border:none;
-background:#000;
-color:white;
-font-family:Montserrat;
+border-radius:999px;
+font-weight:700;
+font-size:15px;
 cursor:pointer;
-position:relative;
-z-index:1;
-overflow:hidden;
-transition:0.2s;
+background:linear-gradient(90deg,#67e8f9,#c084fc,#f472b6);
+color:#000;
+transition:0.25s;
 }
 
-.rgb-btn:before{
-content:"";
-position:absolute;
-top:-2px;left:-2px;right:-2px;bottom:-2px;
-border-radius:10px;
-background:linear-gradient(45deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00c8);
-background-size:400%;
-z-index:-1;
-animation:rgb 8s linear infinite;
-filter:blur(2px);
-}
-
-/* hover + click */
-.rgb-btn:hover{
+.btn:hover{
 transform:translateY(-2px);
-box-shadow:0 0 20px rgba(0,255,213,0.4);
+box-shadow:0 10px 30px rgba(103,232,249,0.4);
 }
 
-.rgb-btn:active{
-transform:scale(0.95);
-}
-
-@keyframes rgb{
-0%{background-position:0}
-100%{background-position:400%}
+.btn:active{
+transform:scale(0.96);
 }
 
 /* RESULT */
@@ -171,7 +147,6 @@ margin-top:6px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-gap:6px;
 }
 
 /* FAB */
@@ -179,37 +154,23 @@ gap:6px;
 position:fixed;
 bottom:90px;
 right:18px;
-width:50px;
-height:50px;
+width:55px;
+height:55px;
 border-radius:50%;
-background:#000;
+background:linear-gradient(90deg,#67e8f9,#c084fc);
 display:flex;
 align-items:center;
 justify-content:center;
 cursor:pointer;
 z-index:999;
-transition:0.25s;
-}
-
-.fab:hover{
-transform:scale(1.1);
-}
-
-.fab:before{
-content:"";
-position:absolute;
-top:-2px;left:-2px;right:-2px;bottom:-2px;
-border-radius:50%;
-background:linear-gradient(45deg,#ff0000,#00ffd5,#7a00ff);
-background-size:400%;
-animation:rgb 6s linear infinite;
-z-index:-1;
+color:#000;
+font-size:22px;
 }
 
 /* MENU */
 .menu{
 position:fixed;
-bottom:150px;
+bottom:160px;
 right:18px;
 display:flex;
 flex-direction:column;
@@ -222,32 +183,14 @@ z-index:999;
 }
 
 .menu a{
-width:150px;
-padding:10px;
-border-radius:10px;
-background:#000;
+width:160px;
+padding:12px;
+border-radius:14px;
+background:#020617;
 color:white;
 text-align:center;
-font-size:13px;
 text-decoration:none;
-font-family:Montserrat;
-position:relative;
-transition:0.25s;
-}
-
-.menu a:hover{
-transform:translateX(-5px);
-}
-
-.menu a:before{
-content:"";
-position:absolute;
-top:-2px;left:-2px;right:-2px;bottom:-2px;
-border-radius:12px;
-background:linear-gradient(45deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00c8);
-background-size:400%;
-animation:rgb 8s linear infinite;
-z-index:-1;
+border:1px solid #1e293b;
 }
 
 .menu.show{
@@ -255,6 +198,28 @@ opacity:1;
 pointer-events:auto;
 transform:translateY(0);
 }
+
+/* MODAL ƯU ĐÃI */
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.8);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:2000;
+}
+
+.modal-box{
+background:#020617;
+padding:20px;
+border-radius:16px;
+text-align:center;
+border:1px solid #67e8f9;
+width:90%;
+max-width:300px;
+}
+
 </style>
 </head>
 
@@ -272,21 +237,21 @@ transform:translateY(0);
 </div>
 
 <div class="box">
-<h3>💎 KEY VIP</h3>
+<div class="box-title"><span>💎</span> KEY VIP</div>
 <input id="vip" placeholder="Nhập KEY VIP">
-<button class="rgb-btn" onclick="vip()">Kích hoạt</button>
+<button class="btn" onclick="vip()">KÍCH HOẠT VIP</button>
 </div>
 
 <div class="box">
-<h3>🎁 KEY FREE</h3>
+<div class="box-title"><span>🎁</span> KEY FREE</div>
 <input id="free" placeholder="Nhập KEY FREE">
-<button class="rgb-btn" onclick="freeKey()">Nhận Free</button>
+<button class="btn" onclick="freeKey()">NHẬN KEY FREE</button>
 </div>
 
 <div id="result" class="result"></div>
 
 <div id="history" class="history"></div>
-<button class="rgb-btn clear" onclick="clearHis()">🗑 Xóa lịch sử</button>
+<button class="btn" onclick="clearHis()">🗑 Xóa lịch sử</button>
 
 </div>
 </div>
@@ -297,6 +262,18 @@ transform:translateY(0);
 <a href="https://zalo.me/0378099746" target="_blank">💬 Zalo</a>
 <a href="https://t.me/TunDeveloped" target="_blank">📢 Telegram</a>
 <a href="https://www.facebook.com/share/1Ea2ZvmwRa/?mibextid=wwXIfr">🌐 Facebook</a>
+</div>
+
+<!-- POPUP -->
+<div id="popup" class="modal" style="display:none">
+<div class="modal-box">
+<h3 style="color:#67e8f9">🎉 ƯU ĐÃI</h3>
+<p style="margin:10px 0;font-size:14px">
+🔥 Nhập KEY FREE nhận tool miễn phí<br>
+💎 VIP đang giảm giá cực mạnh
+</p>
+<button class="btn" onclick="closePopup()">OK</button>
+</div>
 </div>
 
 <script>
@@ -311,9 +288,16 @@ async function load(){
 try{
 CONFIG=await (await fetch(CONFIG_URL+"?t="+Date.now())).json();
 KEY_DATA=await (await fetch(KEY_URL+"?t="+Date.now())).json();
-}catch(e){
-console.log("Lỗi load JSON");
+}catch(e){}
 }
+
+/* POPUP */
+window.onload=()=>{
+document.getElementById("popup").style.display="flex";
+}
+
+function closePopup(){
+document.getElementById("popup").style.display="none";
 }
 
 function save(type,link){
@@ -334,7 +318,7 @@ return;
 h.innerHTML="<b>📜 Lịch sử:</b>"+history.map(i=>`
 <div class="history-item">
 <span>${i.type}</span>
-<button class="rgb-btn" onclick="copy('${i.link}')">COPY</button>
+<button class="btn" onclick="copy('${i.link}')">COPY</button>
 </div>
 `).join("");
 }
