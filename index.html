@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TUN DEVELOPED</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-    font-family:'Poppins', sans-serif;
+    font-family:Poppins, sans-serif;
     background:#0a0a0a;
     color:#fff;
     display:flex;
@@ -21,43 +21,47 @@ body{
 }
 
 /* MAIN CARD */
-.main{width:100%;max-width:420px;padding:20px}
+.main{
+    width:100%;
+    max-width:420px;
+    padding:20px;
+}
 
 .card{
-    background:#1a1a1a;
+    background:linear-gradient(180deg,#1a0a0a,#0d0d0d);
     border-radius:20px;
     padding:25px;
-    box-shadow:0 0 30px rgba(255,0,0,0.3);
     text-align:center;
+    box-shadow:0 0 30px rgba(255,0,0,0.6);
     border:1px solid rgba(255,0,0,0.2);
 }
 
 /* TITLE */
 .title{
-    font-family:'Orbitron', sans-serif;
-    font-size:42px;
-    letter-spacing:3px;
-    color:#ff2b2b;
-    text-shadow:0 0 8px #ff4c4c, 0 0 20px #ff1a1a;
+    font-family:Orbitron, sans-serif;
+    font-size:36px;
+    letter-spacing:4px;
+    color:#ff2a2a;
+    text-shadow: 0 0 10px #ff2a2a, 0 0 20px #ff4d4d, 0 0 30px #ff1a1a;
     margin-bottom:15px;
 }
 
 /* TAG */
 .tag{
+    margin-top:5px;
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
     gap:8px;
-    margin-bottom:15px;
 }
 
 .tag span{
     font-size:12px;
-    padding:5px 12px;
+    padding:6px 12px;
     border-radius:999px;
-    background:#1a1a1a;
-    border:1px solid #ff2b2b;
-    color:#ff6666;
+    background:#1a0a0a;
+    border:1px solid #660000;
+    color:#ff4d4d;
 }
 
 /* BOX */
@@ -65,9 +69,10 @@ body{
     margin-top:18px;
     padding:20px;
     border-radius:16px;
-    background:#121212;
-    border:1px solid #ff2b2b;
-    box-shadow:0 0 12px rgba(255,0,0,0.3);
+    background:linear-gradient(135deg,#330000,#660000);
+    border:1px solid #ff1a1a;
+    box-shadow:0 0 15px rgba(255,0,0,0.5);
+    text-align:left;
 }
 
 /* BOX TITLE */
@@ -77,13 +82,13 @@ body{
     gap:10px;
     font-size:16px;
     font-weight:700;
-    color:#ff3b3b;
-    margin-bottom:12px;
-    text-shadow:0 0 6px #ff2b2b;
+    color:#ff4d4d;
+    margin-bottom:10px;
+    text-transform: uppercase;
 }
 
 .box-title span{
-    font-size:18px;
+    font-size:20px;
 }
 
 /* INPUT */
@@ -91,18 +96,18 @@ input{
     width:100%;
     padding:14px;
     border-radius:12px;
-    border:1px solid #ff2b2b;
-    background:#1a1a1a;
-    color:white;
+    border:1px solid #660000;
+    background:#1a0a0a;
+    color:#fff;
     font-size:14px;
     margin-bottom:12px;
-    transition:0.25s;
+    transition:0.3s;
 }
 
 input:focus{
     outline:none;
-    border-color:#ff4c4c;
-    box-shadow:0 0 12px rgba(255,0,0,0.5);
+    border-color:#ff2a2a;
+    box-shadow:0 0 8px #ff2a2a;
 }
 
 /* BUTTON */
@@ -114,16 +119,16 @@ input:focus{
     font-weight:700;
     font-size:15px;
     cursor:pointer;
-    background:linear-gradient(90deg,#ff1a1a,#ff4c4c);
+    background:linear-gradient(90deg,#ff2a2a,#ff4d4d,#ff1a1a);
     color:#fff;
-    text-transform:uppercase;
-    box-shadow:0 0 12px rgba(255,0,0,0.4);
-    transition:0.25s;
+    text-shadow: 0 0 5px #fff;
+    transition:0.3s;
+    box-shadow:0 0 10px rgba(255,0,0,0.5);
 }
 
 .btn:hover{
     transform:translateY(-2px);
-    box-shadow:0 0 20px rgba(255,0,0,0.6),0 0 40px rgba(255,0,0,0.3);
+    box-shadow:0 0 20px rgba(255,0,0,0.8), 0 0 40px rgba(255,77,77,0.6);
 }
 
 .btn:active{
@@ -131,22 +136,26 @@ input:focus{
 }
 
 /* RESULT */
-.result{margin-top:12px;font-size:13px}
-.success{color:#22c55e;text-shadow:0 0 4px #22c55e;}
-.error{color:#ff4c4c;text-shadow:0 0 4px #ff2b2b;}
+.result{
+    margin-top:12px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.success{color:#22c55e;text-shadow:0 0 5px #22c55e;}
+.error{color:#ff4d4d;text-shadow:0 0 5px #ff4d4d;}
 
 /* HISTORY */
 .history{
     margin-top:12px;
     padding:10px;
     border-radius:12px;
-    background:#121212;
-    border:1px solid #ff2b2b;
+    background:#1a0a0a;
+    border:1px solid #660000;
     font-size:12px;
     text-align:left;
     max-height:160px;
     overflow:auto;
-    box-shadow:0 0 8px rgba(255,0,0,0.2);
 }
 
 .history-item{
@@ -164,7 +173,7 @@ input:focus{
     width:55px;
     height:55px;
     border-radius:50%;
-    background:#ff1a1a;
+    background:linear-gradient(45deg,#ff2a2a,#ff4d4d);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -172,7 +181,13 @@ input:focus{
     z-index:999;
     color:#fff;
     font-size:22px;
-    box-shadow:0 0 15px #ff4c4c;
+    box-shadow:0 0 15px rgba(255,0,0,0.7);
+    transition:0.3s;
+}
+
+.fab:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 25px rgba(255,0,0,1);
 }
 
 /* MENU */
@@ -193,13 +208,18 @@ input:focus{
 .menu a{
     width:160px;
     padding:12px;
-    border-radius:12px;
-    background:#1a1a1a;
-    color:#ff6666;
+    border-radius:14px;
+    background:#330000;
+    color:#fff;
     text-align:center;
     text-decoration:none;
-    border:1px solid #ff2b2b;
-    box-shadow:0 0 8px rgba(255,0,0,0.3);
+    border:1px solid #ff1a1a;
+    box-shadow:0 0 10px rgba(255,0,0,0.5);
+    transition:0.3s;
+}
+
+.menu a:hover{
+    box-shadow:0 0 20px rgba(255,0,0,0.8);
 }
 
 .menu.show{
@@ -208,7 +228,7 @@ input:focus{
     transform:translateY(0);
 }
 
-/* MODAL */
+/* MODAL ƯU ĐÃI */
 .modal{
     position:fixed;
     inset:0;
@@ -220,25 +240,27 @@ input:focus{
 }
 
 .modal-box{
-    background:#121212;
+    background:linear-gradient(135deg,#330000,#660000);
     padding:20px;
     border-radius:16px;
     text-align:center;
-    border:1px solid #ff2b2b;
-    box-shadow:0 0 12px rgba(255,0,0,0.4);
+    border:1px solid #ff2a2a;
+    box-shadow:0 0 20px rgba(255,0,0,0.7);
     width:90%;
-    max-width:300px;
+    max-width:320px;
 }
 
-/* TITLE / POPUP TEXT */
 .modal-box h3{
-    color:#ff2b2b;
-    text-shadow:0 0 8px #ff4c4c;
+    color:#ff2a2a;
+    text-shadow:0 0 10px #ff2a2a;
+    margin-bottom:10px;
 }
+
 .modal-box p{
-    margin:10px 0;
     font-size:14px;
-    color:#ff6666;
+    margin-bottom:15px;
+    line-height:1.4;
+    color:#fff;
 }
 
 </style>
@@ -298,7 +320,6 @@ input:focus{
 </div>
 
 <script>
-
 const CONFIG_URL="https://raw.githubusercontent.com/AdminTunDeveloped/TunDeveloped/main/config.json";
 const KEY_URL="https://raw.githubusercontent.com/AdminTunDeveloped/TunDeveloped/main/key.json";
 
@@ -306,94 +327,85 @@ let CONFIG={},KEY_DATA={};
 let history=JSON.parse(localStorage.getItem("his"))||[];
 
 async function load(){
-try{
-CONFIG=await (await fetch(CONFIG_URL+"?t="+Date.now())).json();
-KEY_DATA=await (await fetch(KEY_URL+"?t="+Date.now())).json();
-}catch(e){}
+    try{
+        CONFIG=await (await fetch(CONFIG_URL+"?t="+Date.now())).json();
+        KEY_DATA=await (await fetch(KEY_URL+"?t="+Date.now())).json();
+    }catch(e){}
 }
 
 /* POPUP */
 window.onload=()=>{
-document.getElementById("popup").style.display="flex";
+    document.getElementById("popup").style.display="flex";
 }
 
 function closePopup(){
-document.getElementById("popup").style.display="none";
+    document.getElementById("popup").style.display="none";
 }
 
 function save(type,link){
-history.unshift({type,link});
-if(history.length>10)history.length=10;
-localStorage.setItem("his",JSON.stringify(history));
-render();
+    history.unshift({type,link});
+    if(history.length>10)history.length=10;
+    localStorage.setItem("his",JSON.stringify(history));
+    render();
 }
 
 function render(){
-let h=document.getElementById("history");
-
-if(history.length==0){
-h.innerHTML="📜 Chưa có lịch sử";
-return;
-}
-
-h.innerHTML="<b>📜 Lịch sử:</b>"+history.map(i=>`
-<div class="history-item">
-<span>${i.type}</span>
-<button class="btn" onclick="copy('${i.link}')">COPY</button>
-</div>
-`).join("");
+    let h=document.getElementById("history");
+    if(history.length==0){
+        h.innerHTML="📜 Chưa có lịch sử";
+        return;
+    }
+    h.innerHTML="<b>📜 Lịch sử:</b>"+history.map(i=>`
+        <div class="history-item">
+            <span>${i.type}</span>
+            <button class="btn" onclick="copy('${i.link}')">COPY</button>
+        </div>
+    `).join("");
 }
 
 function copy(t){
-navigator.clipboard.writeText(t);
-alert("Đã copy link");
+    navigator.clipboard.writeText(t);
+    alert("Đã copy link");
 }
 
 function vip(){
-let k=document.getElementById("vip").value.trim();
-let obj=KEY_DATA.personal_keys?.find(x=>x.key.trim()===k);
-
-if(!obj) return err("❌ Key VIP sai");
-
-let link=CONFIG.scripts?.[(obj.platform||"android")+"_full"];
-
-save("💎 VIP",link);
-ok("✔ VIP kích hoạt thành công");
+    let k=document.getElementById("vip").value.trim();
+    let obj=KEY_DATA.personal_keys?.find(x=>x.key.trim()===k);
+    if(!obj) return err("❌ Key VIP sai");
+    let link=CONFIG.scripts?.[(obj.platform||"android")+"_full"];
+    save("💎 VIP",link);
+    ok("✔ VIP kích hoạt thành công");
 }
 
 function freeKey(){
-let k=document.getElementById("free").value.trim();
-
-if(!KEY_DATA.community_keys?.includes(k))
-return err("❌ Key FREE sai");
-
-let link=CONFIG.scripts?.android_free;
-
-save("🎁 FREE",link);
-ok("✔ Nhận FREE thành công");
+    let k=document.getElementById("free").value.trim();
+    if(!KEY_DATA.community_keys?.includes(k))
+        return err("❌ Key FREE sai");
+    let link=CONFIG.scripts?.android_free;
+    save("🎁 FREE",link);
+    ok("✔ Nhận FREE thành công");
 }
 
 function err(t){
-document.getElementById("result").innerHTML="<div class='error'>"+t+"</div>";
+    document.getElementById("result").innerHTML="<div class='error'>"+t+"</div>";
 }
 
 function ok(t){
-document.getElementById("result").innerHTML="<div class='success'>"+t+"</div>";
+    document.getElementById("result").innerHTML="<div class='success'>"+t+"</div>";
 }
 
 function clearHis(){
-history=[];
-localStorage.removeItem("his");
-render();
+    history=[];
+    localStorage.removeItem("his");
+    render();
 }
 
 function toggle(){
-document.getElementById("menu").classList.toggle("show");
+    document.getElementById("menu").classList.toggle("show");
 }
 
 load();
 render();
-
 </script>
 
 </body>
