@@ -384,27 +384,35 @@ async function sendToTelegram(text) {
     return false;
 }
 
-// ==================== Các hàm khác ====================
+// ==================== ĐIỂM DANH - ĐÃ KHÓA CHẮC CHẮN 1 NGÀY 1 LẦN ====================
 let streak = parseInt(localStorage.getItem('proxyStreak')) || 0;
 let lastCheckinDate = localStorage.getItem('lastCheckinDate') || '';
 
 function getToday() { 
-    return new Date().toISOString().slice(0,10); 
+    const now = new Date();
+    return now.getFullYear() + '-' + 
+           String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+           String(now.getDate()).padStart(2, '0');
 }
 
 async function checkin() {
     const today = getToday();
+
+    // KIỂM TRA CHẮC CHẮN - Không cho bấm lần 2
     if (lastCheckinDate === today) { 
-        alert("Bạn đã điểm danh hôm nay rồi!"); 
+        alert("❌ Bạn đã điểm danh hôm nay rồi!\nMỗi ngày chỉ được điểm danh đúng 1 lần.");
         return; 
     }
     
+    // Tăng streak và lưu
     streak++;
     localStorage.setItem('proxyStreak', streak);
     localStorage.setItem('lastCheckinDate', today);
     
+    // Cập nhật giao diện
     document.getElementById("streakText").innerHTML = `Chuỗi: <strong>${streak} ngày</strong>`;
 
+    // Phần thưởng
     let reward = "10.000đ credit";
     if (streak % 7 === 0) reward = "3 ngày Proxy Pro miễn phí 👑";
     else if (streak >= 30) reward = "Proxy VIP 15 ngày";
@@ -412,12 +420,30 @@ async function checkin() {
     document.getElementById("rewardContent").innerHTML = `Bạn nhận được:<br><strong>${reward}</strong>`;
     document.getElementById("rewardPopup").style.display = "block";
 
-    await sendToTelegram(`🔥 AI ĐÓ ĐÃ ĐIỂM DANH!\nStreak: ${streak} ngày\nPhần thưởng: ${reward}`);
+    // Gửi Telegram
+    await sendToTelegram(`🔥 AI ĐÓ ĐÃ ĐIỂM DANH!\nStreak: ${streak} ngày\nPhần thưởng: ${reward}\nNgày: ${today}`);
+
+    // Khóa nút ngay lập tức
+    lockCheckinButton();
 }
 
+// Hàm khóa nút điểm danh
+function lockCheckinButton() {
+    const btn = document.getElementById("checkinBtn");
+    btn.disabled = true;
+    btn.style.background = "linear-gradient(90deg, #4b5563, #6b7280)";
+    btn.style.color = "#d1d5db";
+    btn.innerHTML = `✅ Đã điểm danh hôm nay`;
+    btn.onclick = null;   // Xóa sự kiện click để không bấm được nữa
+}
+
+// ==================== Các hàm khác ====================
 async function claimVIPTask() {
     const link = document.getElementById("tiktokLink").value.trim();
-    if (!link) { alert("Vui lòng dán link video TikTok!"); return; }
+    if (!link) { 
+        alert("Vui lòng dán link video TikTok!"); 
+        return; 
+    }
     
     const ok = await sendToTelegram(`🚀 NHẬN NHIỆM VỤ VIP\nLink: ${link}`);
     if (ok) {
@@ -429,7 +455,10 @@ async function claimVIPTask() {
 }
 
 async function done() {
-    if (!currentNote) { alert("Vui lòng tạo đơn thanh toán trước!"); return; }
+    if (!currentNote) { 
+        alert("Vui lòng tạo đơn thanh toán trước!"); 
+        return; 
+    }
     await sendToTelegram(`🟢 ĐƠN MỚI\n📦 ${currentType} - ${currentAmount}đ\n📱 ${phone} | ${device}\n📝 ${currentNote}`);
     alert("✅ Đơn hàng đã được ghi nhận!");
 }
@@ -466,10 +495,11 @@ function buy(amount, type) {
     currentAmount = amount; 
     currentType = type;
 }
+
 function back() { location.reload(); }
 function closePopup() { document.getElementById("rewardPopup").style.display = "none"; }
 
-// ==================== KHỞI CHẠY - SỬA NÚT ĐEN ====================
+// ==================== KHỞI CHẠY ====================
 window.onload = function() {
     const today = getToday();
     
@@ -493,17 +523,14 @@ window.onload = function() {
     // Hiển thị ngày trên nút
     document.getElementById("checkinDate").textContent = new Date().getDate();
 
-    // ========== SỬA NÚT ĐIỂM DANH Ở ĐÂY ==========
+    // Xử lý nút điểm danh
     const btn = document.getElementById("checkinBtn");
     
-    if (localStorage.getItem('lastCheckinDate') === today) {
-        // ĐÃ điểm danh hôm nay
-        btn.disabled = true;
-        btn.style.background = "linear-gradient(90deg, #4b5563, #6b7280)";
-        btn.style.color = "#d1d5db";
-        btn.innerHTML = `✅ Đã điểm danh hôm nay`;
+    if (lastCheckinDate === today) {
+        // ĐÃ điểm danh hôm nay → khóa nút
+        lockCheckinButton();
     } else {
-        // Chưa điểm danh → giữ nút vàng cam
+        // Chưa điểm danh → cho phép bấm
         btn.disabled = false;
         btn.style.background = "linear-gradient(90deg, #fbbf24, #f59e0b)";
         btn.style.color = "#1e2937";
@@ -512,5 +539,3 @@ window.onload = function() {
     }
 };
 </script>
-</body>
-</html>
