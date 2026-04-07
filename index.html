@@ -21,6 +21,125 @@
         min-height: 100vh;
         overflow-x: hidden;
     }
+
+    /* ==================== STYLE CHO BOT CHAT (thêm mới) ==================== */
+    #chatBotIcon {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #00f5d0, #00c2ff);
+        color: #0f172a;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        box-shadow: 0 8px 25px rgba(0, 245, 208, 0.45);
+        cursor: pointer;
+        z-index: 9999;
+        transition: all 0.3s ease;
+    }
+    #chatBotIcon:hover {
+        transform: scale(1.1);
+    }
+
+    #chatWindow {
+        position: fixed;
+        bottom: 92px;
+        right: 20px;
+        width: 340px;
+        height: 480px;
+        background: #1e2937;
+        border-radius: 20px;
+        box-shadow: 0 15px 45px rgba(0,0,0,0.75);
+        overflow: hidden;
+        display: none;
+        flex-direction: column;
+        z-index: 10000;
+        border: 1px solid rgba(0,245,208,0.3);
+    }
+
+    .chat-header {
+        background: linear-gradient(90deg, #00f5d0, #00c2ff);
+        color: #0f172a;
+        padding: 14px 18px;
+        font-weight: 700;
+        font-size: 17px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .chat-close {
+        margin-left: auto;
+        font-size: 26px;
+        cursor: pointer;
+        opacity: 0.9;
+    }
+
+    .chat-messages {
+        flex: 1;
+        padding: 15px;
+        overflow-y: auto;
+        background: #0f172a;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .message {
+        max-width: 85%;
+        padding: 12px 15px;
+        border-radius: 18px;
+        font-size: 15px;
+        line-height: 1.45;
+    }
+    .bot-message {
+        align-self: flex-start;
+        background: #334155;
+        border-bottom-left-radius: 5px;
+    }
+    .user-message {
+        align-self: flex-end;
+        background: linear-gradient(90deg, #00c2ff, #00f5d0);
+        color: #0f172a;
+        font-weight: 500;
+        border-bottom-right-radius: 5px;
+    }
+
+    .chat-input-area {
+        padding: 12px;
+        background: #1e2937;
+        border-top: 1px solid rgba(148,163,184,0.3);
+        display: flex;
+        gap: 8px;
+    }
+    #chatInput {
+        flex: 1;
+        padding: 14px 16px;
+        border: none;
+        border-radius: 9999px;
+        background: #334155;
+        color: white;
+        font-size: 15.5px;
+    }
+    #chatInput:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0,245,208,0.4);
+    }
+    #sendBtn {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(90deg, #00f5d0, #00c2ff);
+        color: #0f172a;
+        border: none;
+        border-radius: 50%;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    /* Style cũ của bạn (giữ nguyên) */
     .header { 
         padding: 30px 0 10px; 
         text-align: center; 
@@ -198,40 +317,34 @@
         <strong id="buyerCount">2.684</strong> người đã mua hôm nay
     </div>
 
-    <!-- Điểm danh - ĐÃ SỬA LỖI KHÔNG HIỆN NGÀY -->
-<div class="checkin-card" style="background: #1a2338; border: 2px solid #facc15; padding: 24px 20px; border-radius: 26px; margin-bottom: 30px; position: relative;">
-
-    <!-- Badge vàng -->
-    <span style="background: linear-gradient(90deg, #facc15, #fbbf24); color: #1e2937; 
-                 padding: 6px 16px; border-radius: 9999px; font-weight: 700; font-size: 14px; 
-                 display: inline-flex; align-items: center; gap: 6px; position: absolute; top: -12px; left: 24px;">
-        🔥 ĐIỂM DANH HÀNG NGÀY
-    </span>
-
-    <div style="margin-top: 28px;">
-        <h2 style="font-size: 26px; font-weight: 700; line-height: 1.2; margin-bottom: 12px; color: white;">
-            Nhận Proxy Miễn Phí Mỗi Ngày!
-        </h2>
-        
-        <div id="streakText" style="color: #facc15; font-size: 24px; font-weight: 700; margin: 16px 0;">
-            Chuỗi: <strong>0 ngày</strong>
+    <!-- Điểm danh -->
+    <div class="checkin-card" style="background: #1a2338; border: 2px solid #facc15; padding: 24px 20px; border-radius: 26px; margin-bottom: 30px; position: relative;">
+        <span style="background: linear-gradient(90deg, #facc15, #fbbf24); color: #1e2937; 
+                     padding: 6px 16px; border-radius: 9999px; font-weight: 700; font-size: 14px; 
+                     display: inline-flex; align-items: center; gap: 6px; position: absolute; top: -12px; left: 24px;">
+            🔥 ĐIỂM DANH HÀNG NGÀY
+        </span>
+        <div style="margin-top: 28px;">
+            <h2 style="font-size: 26px; font-weight: 700; line-height: 1.2; margin-bottom: 12px; color: white;">
+                Nhận Proxy Miễn Phí Mỗi Ngày!
+            </h2>
+            <div id="streakText" style="color: #facc15; font-size: 24px; font-weight: 700; margin: 16px 0;">
+                Chuỗi: <strong>0 ngày</strong>
+            </div>
+            <div class="calendar-30" id="calendar30" style="margin: 20px 0; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 16px;"></div>
+            <button id="checkinBtn" 
+                    style="width: 100%; padding: 18px; margin-top: 10px; font-size: 17px; font-weight: 700;
+                           border: none; border-radius: 9999px; background: linear-gradient(90deg, #fbbf24, #f59e0b);
+                           color: #1e2937; box-shadow: 0 4px 15px rgba(250, 204, 21, 0.4);">
+                📅 <span id="checkinDate">17</span> Điểm danh hôm nay
+            </button>
         </div>
-
-        <!-- Lịch 30 ngày -->
-        <div class="calendar-30" id="calendar30" style="margin: 20px 0; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 16px;"></div>
-
-        <!-- Nút điểm danh -->
-        <button id="checkinBtn" 
-                style="width: 100%; padding: 18px; margin-top: 10px; font-size: 17px; font-weight: 700;
-                       border: none; border-radius: 9999px; background: linear-gradient(90deg, #fbbf24, #f59e0b);
-                       color: #1e2937; box-shadow: 0 4px 15px rgba(250, 204, 21, 0.4);">
-            📅 <span id="checkinDate">17</span> Điểm danh hôm nay
-        </button>
     </div>
-</div>
 
+    <!-- Nhiệm vụ VIP, Các gói, Benefits... (giữ nguyên như code cũ của bạn) -->
     <!-- Nhiệm vụ VIP -->
     <div class="vip-task" style="background: linear-gradient(135deg, #7c3aed, #c026d3); color: white; padding: 24px 20px; border-radius: 26px; margin-bottom: 30px;">
+        <!-- nội dung vip-task giữ nguyên -->
         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
             <span style="font-size: 28px;">🚀</span>
             <h2 style="font-size: 23px; font-weight: 700; margin: 0;">Nhiệm vụ VIP</h2>
@@ -245,22 +358,18 @@
             <li>✔ Hoặc nhận Proxy VIP miễn phí 7 ngày</li>
         </ul>
 
-        <input type="text" id="tiktokLink" 
-               placeholder="Dán link video TikTok của bạn vào đây" 
+        <input type="text" id="tiktokLink" placeholder="Dán link video TikTok của bạn vào đây" 
                style="width: 100%; padding: 16px 18px; margin: 20px 0 16px; border-radius: 16px; 
                       border: 2px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.15); 
                       color: white; font-size: 15.5px; outline: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
 
-        <button onclick="claimVIPTask()" 
-                class="main-btn" 
-                style="background: white; color: #7c3aed; font-weight: 700; 
-                       display: flex; align-items: center; justify-content: center; gap: 8px;">
-            <span style="font-size: 18px;">📤</span>
-            Gửi link video
+        <button onclick="claimVIPTask()" class="main-btn" 
+                style="background: white; color: #7c3aed; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <span style="font-size: 18px;">📤</span> Gửi link video
         </button>
     </div>
 
-    <!-- Các gói -->
+    <!-- Các gói proxy (giữ nguyên) -->
     <div class="card">
         <span class="badge hot-badge">🔥 GIÁ RẺ - ĐANG HOT</span>
         <h2>Trải Nghiệm</h2>
@@ -308,7 +417,7 @@
     </div>
 </div>
 
-<!-- Thanh toán -->
+<!-- Thanh toán (giữ nguyên) -->
 <div class="container hidden" id="pay">
     <div class="card">
         <h2 style="text-align:center; margin-bottom:25px;">Hoàn tất thông tin</h2>
@@ -341,8 +450,27 @@
 
 <div class="footer">© Bản quyền thuộc về @TUNDEVELOPED_REAL</div>
 
+<!-- ==================== BOT CHAT ADMIN TUNDEVELOPED (thêm mới) ==================== -->
+<div id="chatBotIcon" onclick="toggleChat()">
+    <i class="fas fa-comments"></i>
+</div>
+
+<div id="chatWindow">
+    <div class="chat-header">
+        <i class="fas fa-robot"></i>
+        Admin TunDeveloped
+        <span class="chat-close" onclick="toggleChat()">×</span>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="Hỏi về STK, cách mua, liên hệ..." 
+               onkeypress="if(event.key === 'Enter') sendMessage()">
+        <button id="sendBtn" onclick="sendMessage()">➤</button>
+    </div>
+</div>
+
 <script>
-// ==================== CẤU HÌNH ====================
+// ==================== CẤU HÌNH & CODE CŨ (GIỮ NGUYÊN 100%) ====================
 const BANK = "MB"; 
 const ACCOUNT = "0359268648"; 
 const NAME = "TUNDEVELOPED";
@@ -351,31 +479,20 @@ const CHAT_ID = "8580769327";
 
 let orderId = "", currentNote = "", currentAmount = 0, currentType = "", phone = "", device = "";
 
-// ==================== GỬI TELEGRAM ====================
+// Gửi Telegram (giữ nguyên)
 async function sendToTelegram(text) {
-    const proxies = [
-        "https://api.allorigins.win/get?url=",
-        "https://corsproxy.io/?",
-        "https://api.codetabs.com/v1/proxy?quest=",
-        "https://proxy.cors.sh/",
-        "https://cors-anywhere.herokuapp.com/"
-    ];
-
+    const proxies = ["https://api.allorigins.win/get?url=", "https://corsproxy.io/?", "https://api.codetabs.com/v1/proxy?quest=", "https://proxy.cors.sh/", "https://cors-anywhere.herokuapp.com/"];
     let attempt = 0;
     const maxAttempts = 3;
-
     while (attempt < maxAttempts) {
         attempt++;
         for (let base of proxies) {
             try {
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 8000);
-
                 const fullUrl = base + encodeURIComponent(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(text)}`);
-                
                 const res = await fetch(fullUrl, { signal: controller.signal });
                 clearTimeout(timeoutId);
-
                 if (res.ok) return true;
             } catch (e) {}
         }
@@ -384,67 +501,46 @@ async function sendToTelegram(text) {
     return false;
 }
 
-// ==================== ĐIỂM DANH - ĐÃ KHÓA CHẮC CHẮN 1 NGÀY 1 LẦN ====================
+// Điểm danh (giữ nguyên)
 let streak = parseInt(localStorage.getItem('proxyStreak')) || 0;
 let lastCheckinDate = localStorage.getItem('lastCheckinDate') || '';
 
 function getToday() { 
     const now = new Date();
-    return now.getFullYear() + '-' + 
-           String(now.getMonth() + 1).padStart(2, '0') + '-' + 
-           String(now.getDate()).padStart(2, '0');
+    return now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
 }
 
 async function checkin() {
     const today = getToday();
-
-    // KIỂM TRA CHẮC CHẮN - Không cho bấm lần 2
     if (lastCheckinDate === today) { 
         alert("❌ Bạn đã điểm danh hôm nay rồi!\nMỗi ngày chỉ được điểm danh đúng 1 lần.");
         return; 
     }
-    
-    // Tăng streak và lưu
     streak++;
     localStorage.setItem('proxyStreak', streak);
     localStorage.setItem('lastCheckinDate', today);
-    
-    // Cập nhật giao diện
     document.getElementById("streakText").innerHTML = `Chuỗi: <strong>${streak} ngày</strong>`;
-
-    // Phần thưởng
     let reward = "10.000đ credit";
     if (streak % 7 === 0) reward = "3 ngày Proxy Pro miễn phí 👑";
     else if (streak >= 30) reward = "Proxy VIP 15 ngày";
-
     document.getElementById("rewardContent").innerHTML = `Bạn nhận được:<br><strong>${reward}</strong>`;
     document.getElementById("rewardPopup").style.display = "block";
-
-    // Gửi Telegram
     await sendToTelegram(`🔥 AI ĐÓ ĐÃ ĐIỂM DANH!\nStreak: ${streak} ngày\nPhần thưởng: ${reward}\nNgày: ${today}`);
-
-    // Khóa nút ngay lập tức
     lockCheckinButton();
 }
 
-// Hàm khóa nút điểm danh
 function lockCheckinButton() {
     const btn = document.getElementById("checkinBtn");
     btn.disabled = true;
     btn.style.background = "linear-gradient(90deg, #4b5563, #6b7280)";
     btn.style.color = "#d1d5db";
     btn.innerHTML = `✅ Đã điểm danh hôm nay`;
-    btn.onclick = null;   // Xóa sự kiện click để không bấm được nữa
+    btn.onclick = null;
 }
 
-// ==================== Các hàm khác ====================
 async function claimVIPTask() {
     const link = document.getElementById("tiktokLink").value.trim();
-    if (!link) { 
-        alert("Vui lòng dán link video TikTok!"); 
-        return; 
-    }
-    
+    if (!link) { alert("Vui lòng dán link video TikTok!"); return; }
     const ok = await sendToTelegram(`🚀 NHẬN NHIỆM VỤ VIP\nLink: ${link}`);
     if (ok) {
         alert("✅ Đã gửi link thành công!");
@@ -455,15 +551,11 @@ async function claimVIPTask() {
 }
 
 async function done() {
-    if (!currentNote) { 
-        alert("Vui lòng tạo đơn thanh toán trước!"); 
-        return; 
-    }
+    if (!currentNote) { alert("Vui lòng tạo đơn thanh toán trước!"); return; }
     await sendToTelegram(`🟢 ĐƠN MỚI\n📦 ${currentType} - ${currentAmount}đ\n📱 ${phone} | ${device}\n📝 ${currentNote}`);
     alert("✅ Đơn hàng đã được ghi nhận!");
 }
 
-// ==================== Thanh toán ====================
 function generatePayment() {
     phone = document.getElementById("phone").value.trim();
     device = document.getElementById("device").value;
@@ -472,12 +564,8 @@ function generatePayment() {
         return;
     }
     orderId = "PX" + Math.floor(100000 + Math.random() * 900000);
-
-    let shortPrice = currentAmount === 99999 ? "99.999" : 
-                    (currentAmount === 250000 ? "250K" : "500K");
-
+    let shortPrice = currentAmount === 99999 ? "99.999" : (currentAmount === 250000 ? "250K" : "500K");
     currentNote = `TUNDEVELOPED:${orderId} | ${shortPrice} | ${currentType} | ${phone} | ${device}`;
-
     document.getElementById("noteText").innerText = currentNote;
     const qrUrl = `https://img.vietqr.io/image/${BANK}-${ACCOUNT}-compact.png?amount=${currentAmount}&addInfo=${encodeURIComponent(currentNote)}&accountName=${NAME}`;
     document.getElementById("qrImg").src = qrUrl;
@@ -499,14 +587,73 @@ function buy(amount, type) {
 function back() { location.reload(); }
 function closePopup() { document.getElementById("rewardPopup").style.display = "none"; }
 
-// ==================== KHỞI CHẠY ====================
+// ==================== BOT CHAT ADMIN TUNDEVELOPED (THÊM MỚI) ====================
+function toggleChat() {
+    const chatWin = document.getElementById("chatWindow");
+    chatWin.style.display = chatWin.style.display === "flex" ? "none" : "flex";
+    
+    if (chatWin.style.display === "flex" && document.getElementById("chatMessages").children.length === 0) {
+        addBotMessage("Chào bạn! ❤️<br>Mình là <strong>Admin TunDeveloped</strong>.<br>Bạn cần hỗ trợ gì cứ nói nhé?");
+    }
+}
+
+function addBotMessage(html) {
+    const messages = document.getElementById("chatMessages");
+    const msg = document.createElement("div");
+    msg.className = "message bot-message";
+    msg.innerHTML = html;
+    messages.appendChild(msg);
+    messages.scrollTop = messages.scrollHeight;
+}
+
+function addUserMessage(text) {
+    const messages = document.getElementById("chatMessages");
+    const msg = document.createElement("div");
+    msg.className = "message user-message";
+    msg.textContent = text;
+    messages.appendChild(msg);
+    messages.scrollTop = messages.scrollHeight;
+}
+
+function sendMessage() {
+    const input = document.getElementById("chatInput");
+    const text = input.value.trim();
+    if (!text) return;
+
+    addUserMessage(text);
+    input.value = "";
+
+    setTimeout(() => {
+        let reply = "Cảm ơn bạn! Admin sẽ hỗ trợ sớm nhất.";
+
+        const lower = text.toLowerCase();
+
+        if (lower.includes("stk") || lower.includes("tài khoản") || lower.includes("chuyển khoản")) {
+            reply = `✅ <strong>Thông tin STK:</strong><br>Ngân hàng: MB Bank<br>Số tài khoản: <strong>0359268648</strong><br>Chủ tài khoản: <strong>TRAN DAO THANH DAT</strong>`;
+        }
+        else if (lower.includes("cách mua") || lower.includes("mua proxy") || lower.includes("mua như")) {
+            reply = `✅ <strong>Cách mua proxy:</strong><br>1. Chọn gói → Nhập SĐT & thiết bị<br>2. Nhấn Tiếp tục thanh toán<br>3. Chuyển khoản theo QR hoặc STK<br>4. Nhấn "Tôi đã chuyển khoản"<br>Proxy sẽ được gửi sau 5-15 phút.`;
+        }
+        else if (lower.includes("liên hệ") || lower.includes("zalo") || lower.includes("tele") || lower.includes("facebook")) {
+            reply = `✅ <strong>Liên hệ Admin TunDeveloped:</strong><br>• Zalo: 0359268648<br>• Telegram: t.me/tundeveloped<br>• Facebook: fb.com/tundeveloped`;
+        }
+        else if (lower.includes("giá") || lower.includes("bao nhiêu")) {
+            reply = `✅ Giá hiện tại:<br>• Trải Nghiệm: 99.999đ<br>• Basic: 250.000đ<br>• Pro (nên chọn): 500.000đ`;
+        }
+        else if (lower.includes("hỗ trợ") || lower.includes("thiết bị")) {
+            reply = `✅ Proxy hỗ trợ tốt trên iOS, Android, Windows, Mac và có Antiband & Bypass ổn định.`;
+        }
+
+        addBotMessage(reply);
+    }, 600);
+}
+
+// ==================== KHỞI CHẠY (giữ nguyên) ====================
 window.onload = function() {
     const today = getToday();
     
-    // Tạo lịch 30 ngày
     const cal = document.getElementById('calendar30');
     cal.innerHTML = '';
-    
     for (let i = 29; i >= 0; i--) {
         const dayEl = document.createElement('div');
         dayEl.className = 'day';
@@ -517,20 +664,13 @@ window.onload = function() {
         cal.appendChild(dayEl);
     }
 
-    // Hiển thị streak
     document.getElementById("streakText").innerHTML = `Chuỗi: <strong>${streak} ngày</strong>`;
-
-    // Hiển thị ngày trên nút
     document.getElementById("checkinDate").textContent = new Date().getDate();
 
-    // Xử lý nút điểm danh
     const btn = document.getElementById("checkinBtn");
-    
     if (lastCheckinDate === today) {
-        // ĐÃ điểm danh hôm nay → khóa nút
         lockCheckinButton();
     } else {
-        // Chưa điểm danh → cho phép bấm
         btn.disabled = false;
         btn.style.background = "linear-gradient(90deg, #fbbf24, #f59e0b)";
         btn.style.color = "#1e2937";
@@ -539,3 +679,5 @@ window.onload = function() {
     }
 };
 </script>
+</body>
+</html>
