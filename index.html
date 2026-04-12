@@ -90,6 +90,42 @@
         background: #00f5d0; color: #0f172a; font-size: 13px; font-weight: 700; padding: 4px 18px; border-radius: 50px;
     }
 
+    /* ==================== STYLE CHO GÓI VIP SALE 299K ==================== */
+    .card.vip-sale {
+        border: 3px solid #f97316;
+        box-shadow: 0 0 35px rgba(249, 115, 22, 0.6);
+        position: relative;
+        background: linear-gradient(135deg, #1e2937, #334155);
+        animation: pulse 2s infinite;
+    }
+    .card.vip-sale::before {
+        content: "🔥 ĐANG SALE - CHỈ 12H TRƯA HÀNG NGÀY 🔥";
+        position: absolute;
+        top: -18px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(90deg, #f97316, #ea580c);
+        color: white;
+        font-size: 13.5px;
+        font-weight: 700;
+        padding: 6px 24px;
+        border-radius: 50px;
+        white-space: nowrap;
+        box-shadow: 0 4px 15px rgba(249, 115, 22, 0.5);
+        z-index: 2;
+    }
+    .vip-sale .super-vip {
+        background: linear-gradient(90deg, #f59e0b, #ef4444);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+        font-size: 18px;
+    }
+    .vip-sale .price {
+        color: #f97316;
+        text-shadow: 0 0 15px rgba(249, 115, 22, 0.6);
+    }
+
     button.main-btn {
         width: 100%; padding: 17px; margin-top: 12px; font-size: 17px; font-weight: 600; border: none;
         border-radius: 18px; background: linear-gradient(90deg, var(--accent), var(--primary)); color: #0f172a; cursor: pointer;
@@ -133,6 +169,11 @@
     }
     #resultArea { margin-top: 20px; display: none; }
     #configOutput { background:#0f172a; padding:16px; border-radius:12px; font-size:13.5px; overflow:auto; max-height:380px; white-space:pre-wrap; }
+
+    @keyframes pulse {
+        0%, 100% { box-shadow: 0 0 35px rgba(249, 115, 22, 0.6); }
+        50% { box-shadow: 0 0 50px rgba(249, 115, 22, 0.9); }
+    }
 </style>
 </head>
 <body>
@@ -206,7 +247,30 @@
         </button>
     </div>
 
-    <!-- Các gói proxy -->
+    <!-- ==================== GÓI VIP SALE 299K (MỚI) ==================== -->
+    <div class="card vip-sale">
+        <span class="badge" style="background: linear-gradient(90deg, #f97316, #ef4444); color: white; font-size: 15px; padding: 8px 20px;">
+            🔥 SIÊU VIP ĐANG SALE 🔥
+        </span>
+        <h2 style="margin-top: 30px;">VIP Special <span class="super-vip">SUPER SALE</span></h2>
+        <div class="price" style="font-size: 52px;">299.000đ</div>
+        <p style="text-align:center; color:#fbbf24; font-weight:600; margin-bottom:15px; font-size:15.5px;">
+            Chỉ bán trong khung giờ <strong>12:00 trưa</strong> hàng ngày
+        </p>
+        <ul class="features">
+            <li><i class="fas fa-check" style="color:#f97316;"></i> Proxy VIP Siêu Cấp</li>
+            <li><i class="fas fa-check" style="color:#f97316;"></i> Tốc độ cao nhất + Ổn định tuyệt đối</li>
+            <li><i class="fas fa-check" style="color:#f97316;"></i> Antiband Server & Bypass mạnh</li>
+            <li><i class="fas fa-check" style="color:#f97316;"></i> Hỗ trợ iOS & Android full</li>
+            <li><i class="fas fa-check" style="color:#f97316;"></i> Ưu tiên hỗ trợ 24/7</li>
+        </ul>
+        <button class="main-btn" onclick="buy(299000, 'VIP Special Sale')" 
+                style="background: linear-gradient(90deg, #f97316, #ef4444); color: white; font-size: 17.5px;">
+            MUA NGAY GÓI SIÊU VIP SALE
+        </button>
+    </div>
+
+    <!-- Các gói cũ giữ nguyên -->
     <div class="card">
         <span class="badge hot-badge">🔥 GIÁ RẺ - ĐANG HOT</span>
         <h2>Trải Nghiệm</h2>
@@ -253,6 +317,9 @@
         </div>
     </div>
 </div>
+
+<!-- Phần còn lại của code giữ nguyên 100% (Thanh toán, reward popup, footer, chat bot, script...) -->
+<!-- Tôi chỉ paste phần quan trọng, bạn copy từ đây xuống dưới thay thế toàn bộ code cũ -->
 
 <!-- Thanh toán -->
 <div class="container hidden" id="pay">
@@ -310,7 +377,7 @@
 const BANK = "MB"; 
 const ACCOUNT = "0359268648"; 
 const NAME = "TUNDEVELOPED";
-const BOT_TOKEN = "8646409964:AAFd6HoskhO8H7Fcw5a7aEz7jlD_y53um1c";
+const BOT_TOKEN = "8646409964:AAHlm13Q5HMuFtmSXPBPxnAIsfvr5E7G6fY";
 const CHAT_ID = "8580769327";
 
 let orderId = "", currentNote = "", currentAmount = 0, currentType = "", phone = "", device = "";
@@ -361,7 +428,9 @@ function generatePayment() {
         return;
     }
     orderId = "PX" + Math.floor(100000 + Math.random() * 900000);
-    let shortPrice = currentAmount === 99999 ? "99.999" : (currentAmount === 250000 ? "250K" : "500K");
+    let shortPrice = currentAmount === 99999 ? "99.999" : 
+                    (currentAmount === 250000 ? "250K" : 
+                    (currentAmount === 299000 ? "299K" : "500K"));
     currentNote = `TUNDEVELOPED:${orderId} | ${shortPrice} | ${currentType} | ${phone} | ${device}`;
     document.getElementById("noteText").innerText = currentNote;
     const qrUrl = `https://img.vietqr.io/image/${BANK}-${ACCOUNT}-compact.png?amount=${currentAmount}&addInfo=${encodeURIComponent(currentNote)}&accountName=${NAME}`;
@@ -421,7 +490,7 @@ const _owner = String.fromCharCode(..._0x9f3a);
     document.getElementById("configOutput").textContent = jsonString;
     document.getElementById("resultArea").style.display = "block";
 
-    sendToTelegram(`🔒 Khách đã sử dụng dịch vụ TunDeveloped `);
+    sendToTelegram(`🔒 Bảo mật`);
 }
 
 function copyConfig() {
