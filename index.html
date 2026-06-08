@@ -1490,29 +1490,14 @@ async function confirmPaid(){
 }
 
 /* ── TELEGRAM ── */
-async function sendTelegram(text){
-  const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-  
-  try {
-    const r = await fetch(url, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({chat_id: CHAT_ID, text: text, parse_mode: 'HTML'}),
-      signal: AbortSignal.timeout(8000)
-    });
-    const data = await r.json();
-    if (data.ok) return true;
-  } catch(e) {
-    try {
-      const proxy = `https://corsproxy.io/?${encodeURIComponent(url + '?chat_id=' + CHAT_ID + '&text=' + encodeURIComponent(text))}`;
-      await fetch(proxy, {signal: AbortSignal.timeout(8000)});
-      return true;
-    } catch(e2) {
-      console.error('Telegram error:', e2);
-    }
-  }
-  return false;
+async function confirmPaid(){
+  const phone = document.getElementById('payPhone').value || 'Không có';
+  const device = document.getElementById('payDevice').value || 'Không có';
+  await sendTelegram(`🟢 ĐƠN MỚI\n📦 ${payPkg} — ${payAmt.toLocaleString('vi')}đ\n📱 SĐT: ${phone}\n📲 Thiết bị: ${device}\n📝 Mã CK: ${payNote}`);
+  closePayment();
+  showToast('✅ Đơn hàng đã ghi nhận! Admin liên hệ sớm nhất.');
 }
+
 
 
 /* ── TOAST ── */
