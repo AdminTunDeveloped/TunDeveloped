@@ -1481,14 +1481,6 @@ function generateQR(){
   document.getElementById('payStep2').style.display='block';
 }
 
-
-function copyNote(){navigator.clipboard.writeText(payNote).catch(()=>{});showToast('✅ Đã sao chép nội dung chuyển khoản!');}
-async function confirmPaid(){
-  await sendTelegram(`🟢 ĐƠN MỚI\n📦 ${payPkg} — ${payAmt.toLocaleString('vi')}đ\n📝 ${payNote}`);
-  closePayment();
-  showToast('✅ Đơn hàng đã ghi nhận! Admin liên hệ sớm nhất.');
-}
-
 /* ── TELEGRAM ── */
 async function confirmPaid(){
   const phone = document.getElementById('payPhone').value || 'Không có';
