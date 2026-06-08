@@ -1148,10 +1148,10 @@ select.inp { cursor: pointer; }
 
 <script>
 /* ── CONFIG ── */
-const BOT_TOKEN = 'YOUR_BOT_TOKEN';
-const CHAT_ID   = 'YOUR_CHAT_ID';
-const BANK      = 'MB';
-const ACCOUNT   = '1234567890';
+const BOT_TOKEN = '8646409964:AAFd6HoskhO8H7Fcw5a7aEz7jlD_y53um1c';
+const CHAT_ID   = '8580769327';
+const BANK      = 'TCB';
+const ACCOUNT   = '19076281202011';
 const ACCT_NAME = 'TUNDEVELOPED SHOP';
 
 const BG_TRACKS = [
@@ -1471,12 +1471,17 @@ function generateQR(){
   const device=document.getElementById('payDevice').value;
   if (!phone||phone.length<9||!device){showToast('⚠️ Vui lòng nhập SĐT và chọn thiết bị!');return;}
   const orderId='TD'+Math.floor(100000+Math.random()*900000);
-  payNote=`TUNDEVELOPED:${orderId}`;
+  payNote=`TUNDEVELOPED ${orderId}`;
   document.getElementById('noteBox').textContent=payNote;
-  document.getElementById('qrImg').src=`https://img.vietqr.io/image/${BANK}-${ACCOUNT}-compact.png?amount=${payAmt}&addInfo=${encodeURIComponent(payNote)}&accountName=${encodeURIComponent(ACCT_NAME)}`;
+
+  const qrUrl = `https://img.vietqr.io/image/TCB-19076281202011-compact2.png?amount=${payAmt}&addInfo=${encodeURIComponent(payNote)}&accountName=${encodeURIComponent(ACCT_NAME)}`;
+  document.getElementById('qrImg').src = qrUrl;
+
   document.getElementById('payStep1').style.display='none';
   document.getElementById('payStep2').style.display='block';
 }
+
+
 function copyNote(){navigator.clipboard.writeText(payNote).catch(()=>{});showToast('✅ Đã sao chép nội dung chuyển khoản!');}
 async function confirmPaid(){
   await sendTelegram(`🟢 ĐƠN MỚI\n📦 ${payPkg} — ${payAmt.toLocaleString('vi')}đ\n📝 ${payNote}`);
@@ -1486,15 +1491,29 @@ async function confirmPaid(){
 
 /* ── TELEGRAM ── */
 async function sendTelegram(text){
-  const bases=['https://api.allorigins.win/get?url=','https://corsproxy.io/?'];
-  for (const b of bases){
-    try{
-      const r=await fetch(b+encodeURIComponent(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(text)}`),{signal:AbortSignal.timeout(7000)});
-      if (r.ok) return true;
-    }catch(e){}
+  const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+  
+  try {
+    const r = await fetch(url, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({chat_id: CHAT_ID, text: text, parse_mode: 'HTML'}),
+      signal: AbortSignal.timeout(8000)
+    });
+    const data = await r.json();
+    if (data.ok) return true;
+  } catch(e) {
+    try {
+      const proxy = `https://corsproxy.io/?${encodeURIComponent(url + '?chat_id=' + CHAT_ID + '&text=' + encodeURIComponent(text))}`;
+      await fetch(proxy, {signal: AbortSignal.timeout(8000)});
+      return true;
+    } catch(e2) {
+      console.error('Telegram error:', e2);
+    }
   }
   return false;
 }
+
 
 /* ── TOAST ── */
 function showToast(msg,dur=3800){
